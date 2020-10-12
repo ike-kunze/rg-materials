@@ -5,7 +5,7 @@
 COINRG                                                          I. Kunze
 Internet-Draft                                                 K. Wehrle
 Intended status: Informational                    RWTH Aachen University
-Expires: 5 April 2021                                     2 October 2020
+Expires: 15 April 2021                                   12 October 2020
 
 
              Industrial Use Cases for In-Network Computing
@@ -42,7 +42,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 April 2021.
+   This Internet-Draft will expire on 15 April 2021.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 1]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 1]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 2]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 2]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -165,7 +165,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 3]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 3]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -221,7 +221,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 4]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 4]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -277,7 +277,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 5]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 5]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -333,7 +333,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 6]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 6]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -389,7 +389,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 7]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 7]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -445,7 +445,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 8]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 8]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -501,7 +501,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                  [Page 9]
+Kunze & Wehrle            Expires 15 April 2021                 [Page 9]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -557,7 +557,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                 [Page 10]
+Kunze & Wehrle            Expires 15 April 2021                [Page 10]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -613,7 +613,7 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                 [Page 11]
+Kunze & Wehrle            Expires 15 April 2021                [Page 11]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -669,7 +669,7 @@ Authors' Addresses
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                 [Page 12]
+Kunze & Wehrle            Expires 15 April 2021                [Page 12]
 
 Internet-Draft            Industrial Use Cases              October 2020
 
@@ -725,4 +725,4 @@ Internet-Draft            Industrial Use Cases              October 2020
 
 
 
-Kunze & Wehrle            Expires 5 April 2021                 [Page 13]
+Kunze & Wehrle            Expires 15 April 2021                [Page 13]
