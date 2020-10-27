@@ -38,6 +38,7 @@ normative:
 
 informative:
   I-D.mcbride-edge-data-discovery-overview:
+  I-D.draft-sarathchandra-coin-appcentres-03:
   I-D.fink-coin-sec-priv:
   RUETH: DOI.10.1145/3229591.3229592
   PENNEKAMP: DOI.10.1145/3338499.3357357
@@ -302,8 +303,31 @@ It is thus crucial to deploy security and authentication functionality on on-pre
 Ways to implement and combine security measures with in-network computing are described in more detail in {{I-D.fink-coin-sec-priv}}.
 
 
+# Immersive Devices {#immersiveDevices}
+
+
+## Mobile Application Offloading
+NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
+
+## Edge AR/VR
+NOTE: Maybe from the currently expired draft-montpetit-coin-xr-03?
+
+# Infrastructure Services {#infrastructureServices}
+
+## Distributed AI {#distributedAI}
+NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
+Potential references to some B5G considerations)
+ 
+## Content Delivery Networks {#CDNs}
+NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
+
+## CFaaS {#CFaaS}
+NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
+
+
+
 #Taxonomy
-Todo
+NOTE: Will be derived as a next step
 
 
 # IANA Considerations
@@ -312,13 +336,7 @@ N/A
 # Conclusion
 There are several domains that can profit from COIN.
 
-Different industrial applications have unique sets of requirements.
+Industrial scenarios have unique sets of requirements mostly focusing around tight latency constraints with high required bandwidths.
 
-In the control scenario, tight latency constraints in the single digit millisecond range have to be satisfied despite the use of cloud platforms and the corresponding unstable latency of the Internet.
+NOTE: Further aspects will be added once more use cases are added to the draft. 
 
-In a second scenario, large amounts of data have to be transmitted to cloud platforms for further evaluation.
-One important task here is to reduce the amount of data that needs to be transmitted as the available Internet access speed is most likely non-sufficient.
-Apart from that, security measures have to be implemented as business data is transmitted to the Internet.
-
-Regarding safety, software-based measures often lack the required guarantees and do not withstand the testing for certification.
-In-network processing with its potential for early responses can be a solution by combining different sensor outputs early and acting quickly.

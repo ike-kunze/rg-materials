@@ -5,7 +5,7 @@
 COINRG                                                          I. Kunze
 Internet-Draft                                                 K. Wehrle
 Intended status: Informational                    RWTH Aachen University
-Expires: 15 April 2021                                   12 October 2020
+Expires: 30 April 2021                                   27 October 2020
 
 
                    Use Cases for In-Network Computing
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 April 2021.
+   This Internet-Draft will expire on 30 April 2021.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kunze & Wehrle            Expires 15 April 2021                 [Page 1]
+Kunze & Wehrle            Expires 30 April 2021                 [Page 1]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -72,22 +72,29 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Industrial Use Cases  . . . . . . . . . . . . . . . . . . . .   3
-     3.1.  IIoT Network Scenario . . . . . . . . . . . . . . . . . .   3
-     3.2.  In-Network Control / Time-sensitive applications  . . . .   4
+     3.1.  IIoT Network Scenario . . . . . . . . . . . . . . . . . .   4
+     3.2.  In-Network Control / Time-sensitive applications  . . . .   5
        3.2.1.  Characterization and Requirements . . . . . . . . . .   5
        3.2.2.  Approaches  . . . . . . . . . . . . . . . . . . . . .   6
-     3.3.  Large Volume Applications/ Traffic Filtering  . . . . . .   6
+     3.3.  Large Volume Applications/ Traffic Filtering  . . . . . .   7
        3.3.1.  Characterization and Requirements . . . . . . . . . .   7
-       3.3.2.  Approaches  . . . . . . . . . . . . . . . . . . . . .   7
+       3.3.2.  Approaches  . . . . . . . . . . . . . . . . . . . . .   8
      3.4.  Industrial Safety (Dead Man's Switch) . . . . . . . . . .   9
        3.4.1.  Characterization and Requirements . . . . . . . . . .  10
        3.4.2.  Approaches  . . . . . . . . . . . . . . . . . . . . .  10
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  10
-   5.  Taxonomy  . . . . . . . . . . . . . . . . . . . . . . . . . .  11
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  11
-   7.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  11
-   8.  Informative References  . . . . . . . . . . . . . . . . . . .  11
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  12
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .  11
+   5.  Immersive Devices . . . . . . . . . . . . . . . . . . . . . .  11
+     5.1.  Mobile Application Offloading . . . . . . . . . . . . . .  11
+     5.2.  Edge AR/VR  . . . . . . . . . . . . . . . . . . . . . . .  11
+   6.  Infrastructure Services . . . . . . . . . . . . . . . . . . .  11
+     6.1.  Distributed AI  . . . . . . . . . . . . . . . . . . . . .  11
+     6.2.  Content Delivery Networks . . . . . . . . . . . . . . . .  11
+     6.3.  CFaaS . . . . . . . . . . . . . . . . . . . . . . . . . .  11
+   7.  Taxonomy  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
+   9.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  12
+   10. Informative References  . . . . . . . . . . . . . . . . . . .  12
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
 
 1.  Introduction
 
@@ -99,6 +106,14 @@ Table of Contents
    applications and has helped in the rapid growth of the Internet.
    However, there are several domains which, e.g., demand a number of
    strict performance guarantees that cannot be provided over regular
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 2]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
    best-effort networks.  In this context, flexibly distributing the
    computation tasks across the network can help to achieve the
    guarantees and increase the overall performance.
@@ -106,13 +121,6 @@ Table of Contents
    The different domains, however, have different requirements and it is
    unclear whether there can be a common solution to all COIN scenarios
    or if solutions have to be tailored to each scenario.
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 2]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
 
    This document discusses the applications and requirements of some
    domains to provide a foundation for discussion.  Furthermore, it
@@ -151,6 +159,17 @@ Internet-Draft               COIN Use Cases                 October 2020
    industrial production domain and to illustrate how COIN can be
    helpful.
 
+
+
+
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 3]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
 3.1.  IIoT Network Scenario
 
    Common components of the IIoT can be divided into three categories as
@@ -162,14 +181,6 @@ Internet-Draft               COIN Use Cases                 October 2020
    let the digital world interact with the physical world by executing
    actions after receiving (simple) control information.  The processing
    of the sensor data and the creation of the control information is
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 3]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
-
    done on COMPUTING DEVICES.  They range from small-powered controllers
    close to the EDGE DEVICES, to more powerful edge or remote clouds in
    larger distances.  The connection between the EDGE and COMPUTING
@@ -202,6 +213,19 @@ Internet-Draft               COIN Use Cases                 October 2020
 
      Figure 1: Industrial networks show a high level of heterogeneity.
 
+
+
+
+
+
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 4]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
 3.2.  In-Network Control / Time-sensitive applications
 
    The control of physical processes and components of a production line
@@ -218,14 +242,6 @@ Internet-Draft               COIN Use Cases                 October 2020
    models.  A centralized control is desirable to manage the large
    amount of available information which often has to be pre-processed
    or aggregated with other information before it can be used.  PLCs are
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 4]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
-
    not designed for this array of tasks and computations could
    theoretically be moved to more powerful devices.  These devices are
    no longer close to the controlled objects and induce additional
@@ -258,6 +274,14 @@ Internet-Draft               COIN Use Cases                 October 2020
 
                   Figure 2: Simple feedback control model.
 
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 5]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
    Apart from the control model, the quality of the control primarily
    depends on the timely reception of the sensor feedback, because the
    controller can only react if it is notified of changes in the system
@@ -274,13 +298,6 @@ Internet-Draft               COIN Use Cases                 October 2020
    The main requirements for the industrial control scenario are low and
    stable latencies to ensure that processes can work continuously and
    that no machines are damaged.
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 5]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
 
 3.2.2.  Approaches
 
@@ -314,6 +331,13 @@ Internet-Draft               COIN Use Cases                 October 2020
    *  How does the overall controller interact with the simplified
       versions?
 
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 6]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
 3.3.  Large Volume Applications/ Traffic Filtering
 
    In the IIoT, processes and machines can be monitored more effectively
@@ -330,14 +354,6 @@ Internet-Draft               COIN Use Cases                 October 2020
    considerations in Section 3.2, off-premise cloud platforms offer
    cost-effective solutions with a high degree of flexibility and
    scalability.  While the unpredictable latency of the Internet is only
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 6]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
-
    a subordinate problem for this use case, moving all data to off-
    premise locations primarily poses infrastructural challenges which
    are presented in more detail in the following.
@@ -370,6 +386,14 @@ Internet-Draft               COIN Use Cases                 October 2020
    of the company further comes with security concerns, as sensitive
    information or valuable business secrets might be contained in it.
    Typical security measures such as encrypting the data make in-network
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 7]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
    computing techniques hardly applicable as they typically work on
    unencrypted data.  Adding security to in-network computing
    approaches, either by adding functionality for handling encrypted
@@ -385,14 +409,6 @@ Internet-Draft               COIN Use Cases                 October 2020
 
    2.  aggregating data by applying pre-processing steps within the
        network
-
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 7]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
 
    Both concepts require detailed knowledge about the monitoring
    infrastructure at the factories and the purpose of the transmitted
@@ -426,6 +442,14 @@ Internet-Draft               COIN Use Cases                 October 2020
 
    *  How can traffic filters be coordinated and deployed?
 
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 8]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
    *  How can traffic filters be changed dynamically?
 
    *  How can traffic filtering be signaled to the end-hosts?
@@ -440,15 +464,6 @@ Internet-Draft               COIN Use Cases                 October 2020
    available.  One example is finding the maximum of all sensor values
    which can either be done iteratively at each intermediate hop or at
    the first hop, where all data is available.
-
-
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 8]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
 
    Using expert knowledge about the exact computation steps and the
    concrete transmission path of the sensor data, simple computation
@@ -481,6 +496,16 @@ Internet-Draft               COIN Use Cases                 October 2020
    like emergency switches at the working positions are enough to
    provide a decent level of safety.
 
+
+
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                 [Page 9]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
    Modern factories are characterized by increasingly dynamic and
    complex environments with new interaction scenarios between humans
    and robots.  Robots can either directly assist humans or perform
@@ -493,18 +518,6 @@ Internet-Draft               COIN Use Cases                 October 2020
    availability of sensor data and the detailed monitoring of the
    factories can help to build additional safety measures if the
    corresponding data is collected early at the correct position.
-
-
-
-
-
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                 [Page 9]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
 
 3.4.1.  Characterization and Requirements
 
@@ -542,6 +555,13 @@ Internet-Draft               COIN Use Cases                 October 2020
    *  Which additional safety measures can be provided? ** Do these
       measures actually improve safety?
 
+
+
+Kunze & Wehrle            Expires 30 April 2021                [Page 10]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
    *  Which sensor information can be combined and how?
 
 4.  Security Considerations
@@ -554,52 +574,69 @@ Internet-Draft               COIN Use Cases                 October 2020
    facilities and consequently leaves the control of the company.
    Insecure on-premise communication within the company and on the shop-
    floor is also a problem as machines could be intruded from the
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                [Page 10]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
-
    outside.  It is thus crucial to deploy security and authentication
    functionality on on-premise and outgoing communication although this
    might interfere with in-network computing approaches.  Ways to
    implement and combine security measures with in-network computing are
    described in more detail in [I-D.fink-coin-sec-priv].
 
-5.  Taxonomy
+5.  Immersive Devices
 
-   Todo
+5.1.  Mobile Application Offloading
 
-6.  IANA Considerations
+   NOTE: Will be moved here from
+   [I-D.draft-sarathchandra-coin-appcentres-03]
+
+5.2.  Edge AR/VR
+
+   NOTE: Maybe from the currently expired draft-montpetit-coin-xr-03?
+
+6.  Infrastructure Services
+
+6.1.  Distributed AI
+
+   NOTE: Will be moved here from
+   [I-D.draft-sarathchandra-coin-appcentres-03] Potential references to
+   some B5G considerations)
+
+6.2.  Content Delivery Networks
+
+   NOTE: Will be moved here from
+   [I-D.draft-sarathchandra-coin-appcentres-03]
+
+6.3.  CFaaS
+
+   NOTE: Will be moved here from
+   [I-D.draft-sarathchandra-coin-appcentres-03]
+
+
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                [Page 11]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
+7.  Taxonomy
+
+   NOTE: Will be derived as a next step
+
+8.  IANA Considerations
 
    N/A
 
-7.  Conclusion
+9.  Conclusion
 
    There are several domains that can profit from COIN.
 
-   Different industrial applications have unique sets of requirements.
+   Industrial scenarios have unique sets of requirements mostly focusing
+   around tight latency constraints with high required bandwidths.
 
-   In the control scenario, tight latency constraints in the single
-   digit millisecond range have to be satisfied despite the use of cloud
-   platforms and the corresponding unstable latency of the Internet.
+   NOTE: Further aspects will be added once more use cases are added to
+   the draft.
 
-   In a second scenario, large amounts of data have to be transmitted to
-   cloud platforms for further evaluation.  One important task here is
-   to reduce the amount of data that needs to be transmitted as the
-   available Internet access speed is most likely non-sufficient.  Apart
-   from that, security measures have to be implemented as business data
-   is transmitted to the Internet.
-
-   Regarding safety, software-based measures often lack the required
-   guarantees and do not withstand the testing for certification.  In-
-   network processing with its potential for early responses can be a
-   solution by combining different sensor outputs early and acting
-   quickly.
-
-8.  Informative References
+10.  Informative References
 
    [GLEBKE]   Glebke, R., Henze, M., Wehrle, K., Niemietz, P., Trauth,
               D., Mattfeld MBA, P., and T. Bergs, "A Case for Integrated
@@ -608,15 +645,13 @@ Internet-Draft               COIN Use Cases                 October 2020
               System Sciences, DOI 10.24251/hicss.2019.871, 2019,
               <https://doi.org/10.24251/hicss.2019.871>.
 
-
-
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                [Page 11]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
+   [I-D.draft-sarathchandra-coin-appcentres-03]
+              Trossen, D., Sarathchandra, C., and M. Boniface, "In-
+              Network Computing for App-Centric Micro-Services", Work in
+              Progress, Internet-Draft, draft-sarathchandra-coin-
+              appcentres-03, 23 October 2020, <http://www.ietf.org/
+              internet-drafts/draft-sarathchandra-coin-appcentres-
+              03.txt>.
 
    [I-D.fink-coin-sec-priv]
               Fink, I. and K. Wehrle, "Enhancing Security and Privacy
@@ -624,6 +659,20 @@ Internet-Draft               COIN Use Cases                 October 2020
               Draft, draft-fink-coin-sec-priv-01, 8 September 2020,
               <http://www.ietf.org/internet-drafts/draft-fink-coin-sec-
               priv-01.txt>.
+
+
+
+
+
+
+
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                [Page 12]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
 
    [I-D.mcbride-edge-data-discovery-overview]
               McBride, M., Kutscher, D., Schooler, E., Bernardos, C.,
@@ -665,15 +714,6 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 Authors' Addresses
 
-
-
-
-
-Kunze & Wehrle            Expires 15 April 2021                [Page 12]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
-
    Ike Kunze
    RWTH Aachen University
    Ahornstr. 55
@@ -682,6 +722,12 @@ Internet-Draft               COIN Use Cases                 October 2020
 
    Phone: +49-241-80-21422
    Email: kunze@comsys.rwth-aachen.de
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                [Page 13]
+
+Internet-Draft               COIN Use Cases                 October 2020
 
 
    Klaus Wehrle
@@ -725,4 +771,14 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 15 April 2021                [Page 13]
+
+
+
+
+
+
+
+
+
+
+Kunze & Wehrle            Expires 30 April 2021                [Page 14]
