@@ -5,7 +5,7 @@
 COINRG                                                          I. Kunze
 Internet-Draft                                                 K. Wehrle
 Intended status: Informational                    RWTH Aachen University
-Expires: 30 April 2021                                   27 October 2020
+Expires: 3 May 2021                                      30 October 2020
 
 
                    Use Cases for In-Network Computing
@@ -37,7 +37,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 April 2021.
+   This Internet-Draft will expire on 3 May 2021.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 1]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 1]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -89,7 +89,7 @@ Table of Contents
    6.  Infrastructure Services . . . . . . . . . . . . . . . . . . .  11
      6.1.  Distributed AI  . . . . . . . . . . . . . . . . . . . . .  11
      6.2.  Content Delivery Networks . . . . . . . . . . . . . . . .  11
-     6.3.  CFaaS . . . . . . . . . . . . . . . . . . . . . . . . . .  11
+     6.3.  CFaaS . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    7.  Taxonomy  . . . . . . . . . . . . . . . . . . . . . . . . . .  12
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  12
    9.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  12
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 2]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 2]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -122,10 +122,10 @@ Internet-Draft               COIN Use Cases                 October 2020
    unclear whether there can be a common solution to all COIN scenarios
    or if solutions have to be tailored to each scenario.
 
-   This document discusses the applications and requirements of some
-   domains to provide a foundation for discussion.  Furthermore, it
-   tries to provide a taxonomy of COIN scenarios that can be worthwhile
-   for further investigation.
+   This document first presents applications and requirements of some
+   domains to illustrate the importance of COIN for realizing advanced
+   applications.  Based on these discussion, the draft then creates a
+   taxonomy of COIN scenarios with the goal of guiding future work.
 
 2.  Terminology
 
@@ -153,10 +153,10 @@ Internet-Draft               COIN Use Cases                 October 2020
    presents a promising starting point because it allows to flexibly
    distribute computation tasks across the network which can help to
    manage dynamic changes.  While specifying general requirements for
-   the different application scenarios is difficult due to the mentioned
+   the industrial production domain is difficult due to the mentioned
    diversity, this document next characterizes and analyzes three
    distinct scenarios to showcase potential requirements for the
-   industrial production domain and to illustrate how COIN can be
+   industrial production domain, thereby illustrating how COIN can be
    helpful.
 
 
@@ -165,7 +165,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 3]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 3]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -221,7 +221,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 4]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 4]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -277,7 +277,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 5]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 5]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -333,7 +333,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 6]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 6]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -389,7 +389,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 7]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 7]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -445,7 +445,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 8]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 8]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -501,7 +501,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                 [Page 9]
+Kunze & Wehrle             Expires 3 May 2021                   [Page 9]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -552,33 +552,36 @@ Internet-Draft               COIN Use Cases                 October 2020
 
    In this context, the following research questions can be of interest:
 
-   *  Which additional safety measures can be provided? ** Do these
-      measures actually improve safety?
+   *  Which additional safety measures can be provided?
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                [Page 10]
+
+Kunze & Wehrle             Expires 3 May 2021                  [Page 10]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
+
+      -  Do these measures actually improve safety?
 
    *  Which sensor information can be combined and how?
 
 4.  Security Considerations
 
-   Current in-network computing approaches typically work on unencrypted
-   plain text data because today's networking devices usually do not
-   have crypto capabilities.  As is already mentioned in Section 3.3.1,
-   this above all poses problems when business data, potentially
-   containing business secrets, is streamed into remote computing
-   facilities and consequently leaves the control of the company.
-   Insecure on-premise communication within the company and on the shop-
-   floor is also a problem as machines could be intruded from the
-   outside.  It is thus crucial to deploy security and authentication
-   functionality on on-premise and outgoing communication although this
-   might interfere with in-network computing approaches.  Ways to
-   implement and combine security measures with in-network computing are
-   described in more detail in [I-D.fink-coin-sec-priv].
+   Note: This section will need consolidation once new use cases are
+   added to the draft.  Current in-network computing approaches
+   typically work on unencrypted plain text data because today's
+   networking devices usually do not have crypto capabilities.  As is
+   already mentioned in Section 3.3.1, this above all poses problems
+   when business data, potentially containing business secrets, is
+   streamed into remote computing facilities and consequently leaves the
+   control of the company.  Insecure on-premise communication within the
+   company and on the shop-floor is also a problem as machines could be
+   intruded from the outside.  It is thus crucial to deploy security and
+   authentication functionality on on-premise and outgoing communication
+   although this might interfere with in-network computing approaches.
+   Ways to implement and combine security measures with in-network
+   computing are described in more detail in [I-D.fink-coin-sec-priv].
 
 5.  Immersive Devices
 
@@ -597,30 +600,34 @@ Internet-Draft               COIN Use Cases                 October 2020
 
    NOTE: Will be moved here from
    [I-D.draft-sarathchandra-coin-appcentres-03] Potential references to
-   some B5G considerations)
+   some B5G considerations
 
 6.2.  Content Delivery Networks
 
    NOTE: Will be moved here from
    [I-D.draft-sarathchandra-coin-appcentres-03]
 
+
+
+
+
+
+
+Kunze & Wehrle             Expires 3 May 2021                  [Page 11]
+
+Internet-Draft               COIN Use Cases                 October 2020
+
+
 6.3.  CFaaS
 
    NOTE: Will be moved here from
    [I-D.draft-sarathchandra-coin-appcentres-03]
 
-
-
-
-
-Kunze & Wehrle            Expires 30 April 2021                [Page 11]
-
-Internet-Draft               COIN Use Cases                 October 2020
-
-
 7.  Taxonomy
 
-   NOTE: Will be derived as a next step
+   NOTE: The taxonomy is intended to generalize characteristics of the
+   different presented use cases and work on it will start once more use
+   cases are added to the draft.
 
 8.  IANA Considerations
 
@@ -662,14 +669,7 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-
-
-
-
-
-
-
-Kunze & Wehrle            Expires 30 April 2021                [Page 12]
+Kunze & Wehrle             Expires 3 May 2021                  [Page 12]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -685,10 +685,10 @@ Internet-Draft               COIN Use Cases                 October 2020
    [PENNEKAMP]
               Pennekamp, J., Henze, M., Schmidt, S., Niemietz, P., Fey,
               M., Trauth, D., Bergs, T., Brecher, C., and K. Wehrle,
-              "Dataflow Challenges in an Internet of Production",
-              Proceedings of the ACM Workshop on Cyber-Physical Systems
-              Security & Privacy - CPS-SPC'19,
-              DOI 10.1145/3338499.3357357, 2019,
+              "Dataflow Challenges in an Internet of Production: A
+              Security & Privacy Perspective", Proceedings of the ACM
+              Workshop on Cyber-Physical Systems Security & Privacy - 
+              CPS-SPC'19, DOI 10.1145/3338499.3357357, 2019,
               <https://doi.org/10.1145/3338499.3357357>.
 
    [RUETH]    Rüth, J., Glebke, R., Wehrle, K., Causevic, V., and S.
@@ -725,7 +725,7 @@ Authors' Addresses
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                [Page 13]
+Kunze & Wehrle             Expires 3 May 2021                  [Page 13]
 
 Internet-Draft               COIN Use Cases                 October 2020
 
@@ -781,4 +781,4 @@ Internet-Draft               COIN Use Cases                 October 2020
 
 
 
-Kunze & Wehrle            Expires 30 April 2021                [Page 14]
+Kunze & Wehrle             Expires 3 May 2021                  [Page 14]
