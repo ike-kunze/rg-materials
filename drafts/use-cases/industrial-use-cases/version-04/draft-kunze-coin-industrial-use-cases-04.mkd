@@ -320,6 +320,7 @@ NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
 
 ## Edge AR/VR
 NOTE: Could be transfered from (expired) {{I-D.draft-montpetit-coin-xr-03}}
+
 Additional potential sources: {{I-D.draft-geng-rtgwg-cfn-req-00}}
 
 # Infrastructure Services {#infrastructureServices}
