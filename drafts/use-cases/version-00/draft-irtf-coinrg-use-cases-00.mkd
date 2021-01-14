@@ -21,7 +21,6 @@ author:
     city: Aachen
     code: D-52074
     country: Germany
-    phone: +49-241-80-21422
 -
     ins: K. Wehrle
     name: Klaus Wehrle
@@ -31,8 +30,15 @@ author:
     city: Aachen
     code: D-52074
     country: Germany
-    phone: +49-241-80-21401
-
+-
+    ins: D. Trossen
+    name: Dirk Trossen
+    org: Huawei Technologies Duesseldorf GmbH
+    email: Dirk.Trossen@Huawei.com
+    street: Riesstr. 25C
+    city: Munich
+    code: D-80992
+    country: Germany
 
 normative:
 
@@ -40,6 +46,8 @@ informative:
   I-D.mcbride-edge-data-discovery-overview:
   I-D.draft-sarathchandra-coin-appcentres-03:
   I-D.fink-coin-sec-priv:
+  I-D.draft-montpetit-coin-xr-03:
+  I-D.draft-geng-rtgwg-cfn-req-00:
   RUETH: DOI.10.1145/3229591.3229592
   PENNEKAMP: DOI.10.1145/3338499.3357357
   VESTIN: DOI.10.1109/ETFA.2018.8502456
@@ -53,13 +61,46 @@ informative:
     date: 2019    
     target: https://arxiv.org/abs/1903.06701
   TSN:
-    title: Time-Sensitive Networking (TSN) Task Group
+    title: IEEE Time-Sensitive Networking (TSN) Task Group
+    author:
+    - org:
+    date: false
+    target: https://1.ieee802.org/tsn/
+  GRPC:
+    title: High performance open source universal RPC framework
+    author:
+    - org:
+    date: false
+    target: https://grpc.io/
+  MPI:
+    title: Scaling Distributed Machine Learning with In-Network Aggregation
     author:
       -
-        name: IEEE
-    date: 2019       
-    target: https://1.ieee802.org/tsn/
-  
+        ins: A. Vishnu
+      -
+        ins: C. Siegel
+      -
+        ins: J. Daily
+    date: false    
+    target: https://arxiv.org/pdf/1603.02339.pdf  
+  FCDN:
+    title: A Flexible and Efficient CDN Infrastructure without DNS Redirection of Content Reflection
+    author:
+      -
+        ins: M. Al-Naday
+      -
+        ins: M. J. Reed
+      -
+        ins: J. Riihijarvi
+      -
+        ins: D. Trossen
+      -
+        ins: N. Thomos
+      -
+        ins: M. Al-Khalidi
+    date: false    
+    target: https://arxiv.org/pdf/1803.00876.pdf 
+
 
 --- abstract
 
@@ -88,6 +129,21 @@ Based on these discussion, the draft then creates a taxonomy of COIN scenarios w
 Programmable network devices (PNDs): Network devices, such as network interface cards and switches, which are programmable, e.g., using P4
 
 
+#Taxonomy
+The use cases in this draft aim at outlining the specific capabilities that in-networking capabilities may bring to their realization. 
+To better capture this goal, we will use the following taxonomy to describe each of the use cases:
+
+1. Description: explanation of the experienced use case behavior 
+
+2. Characterization: explanation of the services that are being realized and the semantics of interactions in the use case
+   
+3. Existing solutions: if existing, outline current methods of realizing the use case
+
+4. Opportunities for in-network capabilities: outline how PNDs may support or improve on the use case case in terms of performance and other metrics. 
+
+5. Requirements: describe the requirements for any solutions the may need development along the opportunities outlined in item 4
+
+
 #Industrial Use Cases
 The industrial domain is characterized by diverse sets of requirements which often cannot be provided over regular best-effort networks.
 Consequently, there is a large number of specialized applications and protocols designed to give the required strict performance guarantees, e.g., regarding real-time capabilities.
@@ -101,7 +157,7 @@ COIN presents a promising starting point because it allows to flexibly distribut
 As specifying general requirements for the industrial production domain is difficult due to the mentioned diversity, this document next characterizes and analyzes three distinct scenarios to showcase potential requirements for the industrial production domain, thereby illustrating how COIN can be helpful. 
 
 ##IIoT Network Scenario {#scenario}
-Common components of the IIoT can be divided into three categories as illustrated in Figure 1.
+Common components of the IIoT can be divided into three categories as illustrated in {{overviewPicture}}.
 Following {{I-D.mcbride-edge-data-discovery-overview}}, EDGE DEVICES, such as sensors and actuators, constitute the boundary between the physical and digital world.
 They communicate the current state of the physical world to the digital world by transmitting sensor data or let the digital world interact with the physical world by executing actions after receiving (simple) control information.
 The processing of the sensor data and the creation of the control information is done on COMPUTING DEVICES.
@@ -151,7 +207,7 @@ In the following, we describe the requirements and characteristics of the contro
 
 
 ### Characterization and Requirements
-A control process consists of two main components as illustrated in Figure 2: a system under control and a controller.
+A control process consists of two main components as illustrated in {{processControl}}: a system under control and a controller.
 In feedback control, the current state of the system is monitored, e.g., using sensors and the controller influences the system based on the difference between the current and the reference state to keep it close to this reference state.
 
 ~~~~~~~~~~
@@ -295,6 +351,207 @@ In this context, the following research questions can be of interest:
 * Which sensor information can be combined and how?
 
 
+
+# Immersive Devices {#immersiveDevices}
+
+## Mobile Application Offloading {#mobileAppOffload}
+
+### Description
+
+   The scenario can be exemplified in an immersive gaming application, where a single user plays a game using a VR headset. 
+   The headset hosts functions that "display" frames to the user, as well as the functions for VR content processing and frame rendering combining with input data received from sensors in the VR headset. 
+   Once this application is partitioned into micro-services and deployed in an app-centric execution environment, only the "display" micro-service is left in the headset, while the compute intensive real-time VR content processing micro-services can be offloaded to a nearby resource rich home PC, for a better execution (faster and possibly higher resolution generation).
+
+### Characterization
+
+   Partitioning an application into micro-services allows for denoting the application as a collection of functions for a flexible composition and a distributed execution, e.g., most functions of a mobile application can be categorized into any of three, "receiving", "processing" and "displaying" function groups.
+
+   Any device may realize one or more of the micro-services of an application and expose them to the execution environment. 
+   When the micro-service sequence is executed on a single device, the outcome is what you see today as applications running on mobile devices.
+   However, the execution of functions may be moved to other (e.g., more suitable) devices which have exposed the corresponding micro-services to the environment. 
+   The result of the latter is flexible mobile function offloading, for possible reduction of power consumption (e.g., offloading CPU intensive process functions to a remote server) or for improved end user experience (e.g., moving display functions to a nearby smart TV). 
+
+   {{figureAppOffload}} shows one realization of the above scenario, where a 'DPR app' is running on a mobile device (containing the partitioned Display(D), Process(P) and Receive(R) micro services) over an SDN network. 
+   The packaged applications are made available through a localized 'playstore server'. 
+   The application installation is realized as a 'service deployment' process, combining the local app installation with a distributed micro-service deployment (and orchestration) on most suitable AppCentreS ('processing server').
+
+
+~~~~~~~~~~
+
+                              +----------+ Processing Server
+            Mobile            | +------+ |  
+        +---------+          | |  P   | |
+        |   App   |          | +------+ |   
+        | +-----+ |          | +------+ |
+        | |D|P|R| |          | |  SR  | |
+        | +-----+ |          | +------+ |         Internet
+        | +-----+ |          +----------+            / 
+        | |  SR | |              |                  /
+        | +-----+ |            +----------+     +------+
+        +---------+           /|SDN Switch|_____|Border|
+                  +-------+ / +----------+     |  SR  |
+                  | 5GAN  |/       |           +------+
+                    +-------+        |
+      +---------+                   |	  		   
+      |+-------+|               +----------+			
+      ||Display||              /|SDN Switch| 
+      |+-------+|   +-------+ / +----------+
+      |+-------+|  /|WIFI AP|/          	     
+      ||   D   || / +-------+     +--+     	
+      |+-------+|/                |SR|
+      |+-------+|                /+--+
+      ||  SR   ||            +---------+
+      |+-------+|            |Playstore|
+      +---------+            | Server  |
+            TV                +---------+
+
+~~~~~~~~~~
+{: #figureAppOffload title="Application Function Offloading Example."}
+
+
+
+   Such localized deployment could, for instance, be provided by a visiting site, such as a hotel or a theme park. 
+   Once the 'processing' micro-service is terminated on the mobile device, the 'service routing' (SR) elements in the network routes requests to the previously deployed 'processing' micro-service running on the processing server' AppCentre over an existing SDN network. 
+   As an extension to the above scenarios, we can also envision that content from one processing micro-service may be distributed to more than one display micro-service, e.g., for multi/many-viewing scenarios.
+
+### Existing Solutions
+
+   NOTE: material on solutions like ETSI MEC will be added here later
+
+###  Opportunities for In-Network Capabilities
+
+   * execution of app-level micro-services (service deployment in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+   * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+   * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+###  Requirements
+
+   Req 5.1.1: Any app-centric execution environment MUST provide means for routing of service requests between resources in the distributed environment.
+
+   Req 5.1.2: Any app-centric execution environment MUST provide means for dynamically choosing the best possible micro-service sequence (i.e., chaining of micro-services) for a given application experience. 
+              Means for discovering suitable micro-service SHOULD be provided.
+
+   Req 5.1.3: Any app-centric execution environment MUST provide means for pinning the excution of a specific micro-service to a specific resource instance in the distributed environment.
+
+   Req 5.1.4: Any app-centric execution environment SHOULD provide means for packaging micro-services for deployments in distributed networked computing environments. 
+              The packaging MAY include any constraints regarding the deployment of service instances in specific network locations or compute resources. 
+              Such packaging SHOULD conform to existing application deployment models, such as mobile application packaging, TOSCA orchestration templates or tar balls or combinations thereof. 
+
+   Req 5.1.5: Any app-centric execution environment MUST provide means for real-time synchronization and consistency of distributed application states.
+
+
+
+## Edge AR/VR
+NOTE: Could be transfered from (expired) {{I-D.draft-montpetit-coin-xr-03}}
+
+Additional potential sources: {{I-D.draft-geng-rtgwg-cfn-req-00}}
+
+# Infrastructure Services {#infrastructureServices}
+
+## Distributed AI {#distributedAI}
+
+### Description
+
+   There is a growing range of use cases demanding for the realization of AI capabilities among distributed endpoints. 
+   Such demand may be driven by the need to increase overall computational power for large-scale problems. 
+   Other solutions may desire the localization of reasoning logic, e.g., for deriving attributes that better preserve privacy of the utilized raw input data. 
+
+###  Characterization
+
+   Examples for large-scale AI problems include biotechnology and astronomy related reasoning over massive amounts of observational input data. 
+   Examples for localizing input data for privacy reasons include radar-like application for the development of topological mapping data based on (distributed) radio measurements at base stations (and possibly end devices), while the processing within radio access networks (RAN) already constitute a distributed AI problem to a certain extent albeit with little flexibility in distributing the execution of the AI logic.
+
+###  Existing Solutions
+
+   Reasoning frameworks, such as TensorFlow, may be utilized for the realization of the (distributed) AI logic, building on remote service invocation through protocols such as gRPC {{GRPC}} or MPI {{MPI}} with the intention of providing an on-chip NPU (neural processor unit) like abstraction to the AI framework.
+
+   NOTE: material on solutions like ETSI MEC and 3GPP work will be added here later
+
+###  Opportunities for In-Network Capabilities
+
+   * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+   * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+###  Requirements
+
+   Req 6.1.1: Any app-centric execution environment MUST provide means to specify the constraints for placing (AI) execution logic in certain logical execution points (and their associated physical locations).
+
+   Req 6.1.2: Any app-centric execution environment MUST provide support for app/micro-service specific invocation protocols.
+
+
+
+## Content Delivery Networks {#CDNs}
+
+### Description
+
+   Delivery of content to end users often relies on Content Delivery Networks (CDNs) storing said content closer to end users for latency reduced delivery with DNS-based indirection being utilized to serve the request on behalf of the origin server. 
+
+###  Characterization
+
+   From the perspective of this draft, a CDN can be interpreted as a (network service level) application with distributed logic for distributing content from the origin server to the CDN ingress and further to the CDN replication points which ultimately serve the user-facing content requests.
+
+###  Existing Solutions
+
+   NOTE: material on solutions will be added here later
+
+   Studies such as those in {{FCDN}} have shown that content distribution at the level of named content, utilizing efficient (e.g., Layer 2) multicast for replication towards edge CDN nodes, can significantly increase the overall network and server efficiency. 
+   It also reduces indirection latency for content retrieval as well as reduces required edge storage capacity by benefiting from the increased network efficiency to renew edge content more quickly against changing demand.
+
+###  Opportunities for In-Network Capabilities
+
+   * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+   * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+   * supporting Layer 2 capabilities for multicast (compute interconnection and collective communication in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+###  Requirements
+
+   Req 6.2.1: Any app-centric execution environment SHOULD utilize Layer 2 multicast transmission capabilities for responses to concurrent service requests. 
+
+## CFaaS {#CFaaS}
+### Description
+
+   App-centric execution environments, consisting of Layer 2 connected data centres, provide the opportunity for infrastructure providers to offer CFaaS type of offerings to application providers. 
+   Those app providers utilize the compute fabric exposed by this CFaaS offering for the purposes defined through their applications. 
+   In other words, the compute resources can be utilized to execute the desired micro-services of which the application is composed, while utilizing the inter-connection between those compute resources to do so in a distributed manner. 
+
+###  Characterization
+
+   We foresee those CFaaS offerings to be tenant-specific, a tenant here defined as the provider of at least one application. 
+   For this, we foresee an interaction between CFaaS provider and tenant to dynamically select the appropriate resources to define the demand side of the fabric. 
+   Conversely, we also foresee the supply side of the fabric to be highly dynamic with resources being offered to the fabric through, e.g., user-provided resources (whose supply might depend on highly context-specific supply policies) or infrastructure resources of intermittent availability such as those provided through road-side infrastructure in vehicular scenarios. 
+   The resulting dynamic demand-supply matching establishes a dynamic nature of the compute fabric that in turn requires trust relationships to be built dynamically between the resource provider(s) and the CFaaS provider.
+   This also requires the communication resources to be dynamically adjusted to interconnect all resources suitably into the (tenant-specific) fabric exposed as CFaaS.
+
+
+###  Existing Solutions
+
+   NOTE: material on solutions will be added here later
+
+###  Opportunities for In-Network Capabilities
+ 
+   * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+   * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+   * supporting Layer 2 capabilities for multicast (compute interconnection and collective communication in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+### Requirements
+
+   Req 6.3.1: Any app-specific execution environment SHOULD expose means to specify the requirements for the tenant-specific compute fabric being utilized for the app execution.
+
+   Req 6.3.2: Any app-specific execution environment SHOULD allow for dynamic integration of compute resources into the compute fabric being utilized for the app execution; those resources include, but are not limited to, end user provided resources.
+
+   Req 6.3.3: Any app-specific execution environment MUST provide means to optimize the inter-connection of compute resources, including those dynamically added and removed during the provisioning of the tenant-specific compute fabric. 
+
+   Req 6.3.4: Any app-specific execution environment MUST provide means for ensuring availability and usage of resources is accounted for.
+
+
+
+
 # Security Considerations {#sec_considerations}
 Note: This section will need consolidation once new use cases are added to the draft.
 Current in-network computing approaches typically work on unencrypted plain text data because today's networking devices usually do not have crypto capabilities.
@@ -304,35 +561,11 @@ It is thus crucial to deploy security and authentication functionality on on-pre
 Ways to implement and combine security measures with in-network computing are described in more detail in {{I-D.fink-coin-sec-priv}}.
 
 
-# Immersive Devices {#immersiveDevices}
-
-
-## Mobile Application Offloading
-NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
-
-## Edge AR/VR
-NOTE: Maybe from the currently expired draft-montpetit-coin-xr-03?
-
-# Infrastructure Services {#infrastructureServices}
-
-## Distributed AI {#distributedAI}
-NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
-Potential references to some B5G considerations
- 
-## Content Delivery Networks {#CDNs}
-NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
-
-## CFaaS {#CFaaS}
-NOTE: Will be moved here from {{I-D.draft-sarathchandra-coin-appcentres-03}}
-
-
-
-#Taxonomy
-NOTE: The taxonomy is intended to generalize characteristics of the different presented use cases and work on it will start once more use cases are added to the draft.
-
-
 # IANA Considerations
 N/A
+
+
+
 
 # Conclusion
 There are several domains that can profit from COIN.
