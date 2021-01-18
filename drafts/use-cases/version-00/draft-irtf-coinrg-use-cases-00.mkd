@@ -49,6 +49,7 @@ informative:
   I-D.fink-coin-sec-priv:
   I-D.draft-montpetit-coin-xr-03:
   I-D.draft-geng-rtgwg-cfn-req-00:
+  I-D.draft-kunze-coin-industrial-use-cases-04:
   RUETH: DOI.10.1145/3229591.3229592
   PENNEKAMP: DOI.10.1145/3338499.3357357
   VESTIN: DOI.10.1109/ETFA.2018.8502456
@@ -142,12 +143,12 @@ To better capture this goal, we will use the following taxonomy to describe each
    
 3. Existing solutions: if existing, outline current methods of realizing the use case
 
-4. Opportunities for in-network capabilities: outline how PNDs may support or improve on the use case case in terms of performance and other metrics. 
+4. Opportunities and Research Questions for COIN: outline how PNDs may support or improve on the use case case in terms of performance and other metrics and state essential questions to suitable for guiding research. 
 
 5. Requirements: describe the requirements for any solutions that may need development along the opportunities outlined in item 4
 
 
-#Industrial Use Cases
+#Industrial Use Cases {#industrialUseCases}
 The industrial domain is characterized by diverse sets of requirements which often cannot be provided over regular best-effort networks.
 Consequently, there is a large number of specialized applications and protocols designed to give the required strict performance guarantees, e.g., regarding real-time capabilities.
 Time-Sensitive-Networking {{TSN}} as an enhancement to the standard Ethernet, e.g., tries to achieve these requirements on the link layer by statically reserving shares of the bandwidth.
@@ -236,7 +237,7 @@ Control functionality is traditionally executed on PLCs close to the machinery a
 Further, the PLCs require vendor-specific implementations and are often hard to update which makes such control processes inflexible and difficult to manage. 
 Moving computations to more freely programmable devices thus has the potential of significantly improving the flexibility. 
 
-###  Opportunities for In-Network Capabilities
+###  Opportunities and Research Questions for COIN
 
 Control models, in general, can become involved but there is a variety of control algorithms that are composed of simple computations such as matrix multiplication.
 These are supported by some PNDs and it is thus possible to compose simplified approximations of the more complex algorithms and deploy them in the network.
@@ -244,7 +245,7 @@ While the simplified versions induce a more inaccurate control, they allow for a
 
 Opportunities: 
 
-* Allow for quicker responses from the network
+* Speed up control update rates by leveraging privileged position in the network
 
 The problem, however, is that networking devices typically only allow for integer precision computation while floating-point precision is needed by most control algorithms.
 Additionally, computational capabilities vary for different available PNDs.
@@ -263,6 +264,12 @@ Research Questions:
 Req 4.2.1: Control approaches MUST provide stable/deterministic latencies.
 
 Req 4.2.2: Control approaches SHOULD provide low latencies.
+
+Req 4.2.3: The interaction between the in-network control function and the overall controller SHOULD be explicit.
+
+Req 4.2.4: Actions of the control approaches SHOULD be explicit to the overall controller.
+
+Req 4.2.5: Actions of the control approaches MUST be overrideable by the overall controller.
 
 
 
@@ -298,13 +305,13 @@ Adding security to in-network computing approaches, either by adding functionali
 
 ### Existing Solutions
 
+Current approaches for handling such large amounts of information typically build upon stream processing frameworks such as Apache Flink.
+While they allow for handling large volume applications, they are tied to performant server machines and upscaling the information density also requires a corresponding upscaling of the compute infrastructure.
 
-Note: Will be added later.
 
+###  Opportunities and Research Questions for COIN
 
-###  Opportunities for In-Network Capabilities
-
-There are at least two concepts which might be suitable for reducing the amount of transmitted data in a meaningful way:
+There are at least two concepts that might be suitable for reducing the amount of transmitted data in a meaningful way using in-network computing:
 
 1. filtering out redundant or unnecessary data 
 2. aggregating data by applying pre-processing steps within the network
@@ -326,7 +333,8 @@ It is important that end-hosts are informed about the filtering so that they can
 
 Opportunities: 
 
-* Complex traffic filtering based on packet data
+* Semantic packet and stream filtering at line-rate
+* Filtering based on packet header and payload, as well as multi-packet information
 
 Challenges/Research Questions:
 
@@ -352,8 +360,7 @@ In this context, the following research questions can be of interest:
 Opportunities: 
 
 * Semantic data aggregation
-* Computations on the data
-
+* Computation across multiple packets and leveraging packet payload
 
 Challenges/Research Questions:
 
@@ -366,7 +373,11 @@ Challenges/Research Questions:
 
 ###  Requirements
 
-Note: Will be added later.
+Req 4.3.1: Filters or preprocessors MUST conform to application-level syntax and semantics.
+
+Req 4.3.2: Filters or preprocessors MAY leverage packet header and payload information
+
+Req 4.3.3: Filters or preprocessors SHOULD be reconfigurable at run-time
 
 
 
@@ -400,7 +411,7 @@ Yet, it is worthwhile to investigate whether such solutions can introduce additi
 
 Note: Will be added later.
 
-###  Opportunities for In-Network Capabilities
+###  Opportunities and Research Questions for COIN
 
 Software-based solutions can take advantage of the large amount of available sensor data.
 Different safety indicators within the production hall can be combined within the network so that programmable networking devices can give early responses if a potential safety breach is detected.
@@ -410,9 +421,9 @@ More advanced concepts could also include image data or combine arbitrary sensor
 
 Opportunities: 
 
-* Will be added
+* Early emergency reactions based on diverse sensor feedback
 
-Challenges/Research Questions:
+Research Questions:
 
 * Which additional safety measures can be provided?
   * Do these measures actually improve safety?
@@ -420,8 +431,9 @@ Challenges/Research Questions:
 
 ###  Requirements
 
-Note: Will be added later.
+Req 4.4.1: COIN-based safety measures MUST NOT degrade existing safety measures.
 
+Req 4.4.2: COIN-based safety measures MAY enhance existing safety measures.
 
 # Immersive Devices {#immersiveDevices}
 
@@ -489,13 +501,24 @@ Note: Will be added later.
 
    NOTE: material on solutions like ETSI MEC will be added here later
 
-###  Opportunities for In-Network Capabilities
+###  Opportunities and Research Questions for COIN
+
+Opportunities:
 
    * execution of app-level micro-services (service deployment in {{I-D.draft-sarathchandra-coin-appcentres-03}})
 
    * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
 
    * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+Research Questions:
+
+   * How to combine service-level orchestration frameworks with app-level packaging methods? 
+   * How to reduce latencies involved in micro-service interactions where service instance locations may change quickly?
+   * How to signal constraints used for routing in a scalable manner? 
+   * How to provide constraint-based routing decisions at packet forwarding speed?
+   * What in-network capabilities may support the execution of micro-services?
+
 
 ###  Requirements
 
@@ -540,10 +563,23 @@ Additional potential sources: {{I-D.draft-geng-rtgwg-cfn-req-00}}
 
    NOTE: material on solutions like ETSI MEC and 3GPP work will be added here later
 
-###  Opportunities for In-Network Capabilities
+###  Opportunities and Research Questions for COIN
+
+Opportunities:
 
    * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
    * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+   * collective communication between multiple instances of AI services
+
+Research Questions:
+
+   * similar to use case in Section 5.1
+   * What are the communication patterns that may be supported by collective communication solutions?
+   * How to achieve scalable multicast delivery with rapidly changing receiver sets?
+   * What in-network capabilities may support the collective communication patterns found?
+   * How to provide a service routing capability that supports any invocation protocol (beyond HTTP)?
+
+
 
 ###  Requirements
 
@@ -570,13 +606,29 @@ Additional potential sources: {{I-D.draft-geng-rtgwg-cfn-req-00}}
    Studies such as those in {{FCDN}} have shown that content distribution at the level of named content, utilizing efficient (e.g., Layer 2) multicast for replication towards edge CDN nodes, can significantly increase the overall network and server efficiency. 
    It also reduces indirection latency for content retrieval as well as reduces required edge storage capacity by benefiting from the increased network efficiency to renew edge content more quickly against changing demand.
 
-###  Opportunities for In-Network Capabilities
+###  Opportunities and Research Questions for COIN
+
+
+Opportunities:
 
    * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
 
    * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
 
    * supporting Layer 2 capabilities for multicast (compute interconnection and collective communication in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+
+Research Questions: in addition to those for Section 5.1,
+
+   * how to utilize L2 multicast to improve on CDN designs? How to utilize in-network capabilities in those designs?
+
+   * what forwarding methods may support the required multicast capabilities (see {{FCDN}})
+
+   * how could storage be traded off against frequent, multicast-based, replication (see {{FCDN}})
+
+   * what scalability limits exist for L2 multicast capabilities? How to overcome them? 
+
+
 
 ###  Requirements
 
@@ -603,13 +655,24 @@ Additional potential sources: {{I-D.draft-geng-rtgwg-cfn-req-00}}
 
    NOTE: material on solutions will be added here later
 
-###  Opportunities for In-Network Capabilities
+###  Opportunities and Research Questions for COIN
  
+Opportunities:
+
    * supporting service-level routing of requests (service routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
 
    * support the constraint-based selection of a specific service instance over others (constraint-based routing in {{I-D.draft-sarathchandra-coin-appcentres-03}})
 
    * supporting Layer 2 capabilities for multicast (compute interconnection and collective communication in {{I-D.draft-sarathchandra-coin-appcentres-03}})
+
+
+Research Questions: similar to those for Section 5.1, in addition
+
+   * how to convey app-specific requirements for the creation of the L2 fabric?
+   * how to dynamically integrate resources, particularly when driving by app-level requirements and changing service-specific constraints?
+   * how to utilize in-network capabilities to aid the availability and accountability of resources? 
+
+
 
 ### Requirements
 
@@ -645,6 +708,7 @@ Industrial scenarios have unique sets of requirements mostly focusing around tig
 NOTE: Further aspects will be added once more use cases are added to the draft. 
 
 
-# Acknowledgements
+# List of Contributors
 
-NOTE: Contributors will be mentioned here.
+* Ike Kunze and Klaus Wehrle have contributed the preceding document {{I-D.draft-kunze-coin-industrial-use-cases-04}} as well as the industrial use cases ({{industrialUseCases}}).
+* Dirk Trossen has contributed the following use cases: {{mobileAppOffload}}, {{distributedAI}}, {{CDNs}}, {{CFaaS}}.
