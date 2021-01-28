@@ -143,7 +143,7 @@ To better capture this goal, we will use the following taxonomy to describe each
    
 3. Existing solutions: if existing, outline current methods of realizing the use case
 
-4. Opportunities and Research Questions for COIN: outline how PNDs may support or improve on the use case case in terms of performance and other metrics and state essential questions to suitable for guiding research. 
+4. Opportunities and Research Questions for COIN: outline how PNDs may support or improve on the use case case in terms of performance and other metrics and state essential questions that are suitable for guiding research. 
 
 5. Requirements: describe the requirements for any solutions that may need development along the opportunities outlined in item 4
 
@@ -269,7 +269,7 @@ Req 4.2.3: The interaction between the in-network control function and the overa
 
 Req 4.2.4: Actions of the control approaches SHOULD be explicit to the overall controller.
 
-Req 4.2.5: Actions of the control approaches MUST be overrideable by the overall controller.
+Req 4.2.5: Actions of the control approaches MUST be overridable by the overall controller.
 
 
 

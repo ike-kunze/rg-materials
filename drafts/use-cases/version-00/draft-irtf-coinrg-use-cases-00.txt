@@ -5,9 +5,9 @@
 COINRG                                                          I. Kunze
 Internet-Draft                                                 K. Wehrle
 Intended status: Informational                    RWTH Aachen University
-Expires: 22 July 2021                                         D. Trossen
+Expires: 1 August 2021                                        D. Trossen
                                     Huawei Technologies Duesseldorf GmbH
-                                                         18 January 2021
+                                                         28 January 2021
 
 
                    Use Cases for In-Network Computing
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 July 2021.
+   This Internet-Draft will expire on 1 August 2021.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 1]
+Kunze, et al.             Expires 1 August 2021                 [Page 1]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 2]
+Kunze, et al.             Expires 1 August 2021                 [Page 2]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -165,7 +165,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 3]
+Kunze, et al.             Expires 1 August 2021                 [Page 3]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -191,8 +191,8 @@ Internet-Draft               COIN Use Cases                 January 2021
 
    4.  Opportunities and Research Questions for COIN: outline how PNDs
        may support or improve on the use case case in terms of
-       performance and other metrics and state essential questions to
-       suitable for guiding research.
+       performance and other metrics and state essential questions that
+       are suitable for guiding research.
 
    5.  Requirements: describe the requirements for any solutions that
        may need development along the opportunities outlined in item 4
@@ -221,7 +221,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 4]
+Kunze, et al.             Expires 1 August 2021                 [Page 4]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -277,7 +277,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 5]
+Kunze, et al.             Expires 1 August 2021                 [Page 5]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -333,7 +333,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 6]
+Kunze, et al.             Expires 1 August 2021                 [Page 6]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -389,7 +389,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 7]
+Kunze, et al.             Expires 1 August 2021                 [Page 7]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -445,7 +445,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 8]
+Kunze, et al.             Expires 1 August 2021                 [Page 8]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -501,7 +501,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                  [Page 9]
+Kunze, et al.             Expires 1 August 2021                 [Page 9]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -557,7 +557,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 10]
+Kunze, et al.             Expires 1 August 2021                [Page 10]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -613,7 +613,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 11]
+Kunze, et al.             Expires 1 August 2021                [Page 11]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -669,7 +669,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 12]
+Kunze, et al.             Expires 1 August 2021                [Page 12]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -725,7 +725,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 13]
+Kunze, et al.             Expires 1 August 2021                [Page 13]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -781,7 +781,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 14]
+Kunze, et al.             Expires 1 August 2021                [Page 14]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -837,7 +837,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 15]
+Kunze, et al.             Expires 1 August 2021                [Page 15]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -893,7 +893,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 16]
+Kunze, et al.             Expires 1 August 2021                [Page 16]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -949,7 +949,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 17]
+Kunze, et al.             Expires 1 August 2021                [Page 17]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1005,7 +1005,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 18]
+Kunze, et al.             Expires 1 August 2021                [Page 18]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1061,7 +1061,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 19]
+Kunze, et al.             Expires 1 August 2021                [Page 19]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1117,7 +1117,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 20]
+Kunze, et al.             Expires 1 August 2021                [Page 20]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1173,7 +1173,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 21]
+Kunze, et al.             Expires 1 August 2021                [Page 21]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1229,7 +1229,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 22]
+Kunze, et al.             Expires 1 August 2021                [Page 22]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1285,7 +1285,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 23]
+Kunze, et al.             Expires 1 August 2021                [Page 23]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1341,7 +1341,7 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 24]
+Kunze, et al.             Expires 1 August 2021                [Page 24]
 
 Internet-Draft               COIN Use Cases                 January 2021
 
@@ -1397,4 +1397,4 @@ Authors' Addresses
 
 
 
-Kunze, et al.             Expires 22 July 2021                 [Page 25]
+Kunze, et al.             Expires 1 August 2021                [Page 25]
