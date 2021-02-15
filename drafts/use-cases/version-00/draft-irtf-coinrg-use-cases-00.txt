@@ -5,9 +5,11 @@
 COINRG                                                          I. Kunze
 Internet-Draft                                                 K. Wehrle
 Intended status: Informational                    RWTH Aachen University
-Expires: 1 August 2021                                        D. Trossen
-                                    Huawei Technologies Duesseldorf GmbH
-                                                         28 January 2021
+Expires: 19 August 2021                                       D. Trossen
+                                                                  Huawei
+                                                          M.J. Montpetit
+                                                               Concordia
+                                                        15 February 2021
 
 
                    Use Cases for In-Network Computing
@@ -16,13 +18,13 @@ Expires: 1 August 2021                                        D. Trossen
 Abstract
 
    Computing in the Network (COIN) comes with the prospect of deploying
-   functionality on networking devices, such as switches and network
-   interface cards.  While such functionality can be beneficial in
-   several contexts, it has to be carefully placed into the context of
-   the general Internet communication.  This document discusses some use
-   cases to demonstrate how real applications can benefit from COIN and
-   to showcase essential requirements that have to be fulfilled by COIN
-   applications.
+   processing functionality on networking devices, such as switches and
+   network interface cards.  While such functionality can be beneficial
+   in several contexts, it has to be carefully placed into the context
+   of the general Internet communication.  This document discusses some
+   use cases to demonstrate how real applications can benefit from COIN
+   and to showcase essential requirements that have to be fulfilled by
+   COIN applications.
 
 Status of This Memo
 
@@ -39,25 +41,27 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 August 2021.
+   This Internet-Draft will expire on 19 August 2021.
 
 Copyright Notice
 
    Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 1]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
    license-info) in effect on the date of publication of this document.
    Please review these documents carefully, as they describe your rights
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 1]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    and restrictions with respect to this document.  Code Components
    extracted from this document must include Simplified BSD License text
    as described in Section 4.e of the Trust Legal Provisions and are
@@ -66,109 +70,124 @@ Internet-Draft               COIN Use Cases                 January 2021
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
-   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   4
    3.  Taxonomy  . . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   4.  Industrial Use Cases  . . . . . . . . . . . . . . . . . . . .   4
+   4.  Industrial Use Cases  . . . . . . . . . . . . . . . . . . . .   5
      4.1.  IIoT Network Scenario . . . . . . . . . . . . . . . . . .   5
      4.2.  In-Network Control / Time-sensitive applications  . . . .   6
        4.2.1.  Description . . . . . . . . . . . . . . . . . . . . .   6
-       4.2.2.  Characterization  . . . . . . . . . . . . . . . . . .   6
+       4.2.2.  Characterization  . . . . . . . . . . . . . . . . . .   7
        4.2.3.  Existing Solutions  . . . . . . . . . . . . . . . . .   7
-       4.2.4.  Opportunities and Research Questions for COIN . . . .   7
+       4.2.4.  Opportunities and Research Questions for COIN . . . .   8
        4.2.5.  Requirements  . . . . . . . . . . . . . . . . . . . .   8
-     4.3.  Large Volume Applications . . . . . . . . . . . . . . . .   8
-       4.3.1.  Description . . . . . . . . . . . . . . . . . . . . .   8
+     4.3.  Large Volume Applications . . . . . . . . . . . . . . . .   9
+       4.3.1.  Description . . . . . . . . . . . . . . . . . . . . .   9
        4.3.2.  Characterization  . . . . . . . . . . . . . . . . . .   9
-       4.3.3.  Existing Solutions  . . . . . . . . . . . . . . . . .   9
-       4.3.4.  Opportunities and Research Questions for COIN . . . .   9
-       4.3.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  11
+       4.3.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  10
+       4.3.4.  Opportunities and Research Questions for COIN . . . .  10
+       4.3.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  12
      4.4.  Industrial Safety . . . . . . . . . . . . . . . . . . . .  12
        4.4.1.  Description . . . . . . . . . . . . . . . . . . . . .  12
-       4.4.2.  Characterization  . . . . . . . . . . . . . . . . . .  12
+       4.4.2.  Characterization  . . . . . . . . . . . . . . . . . .  13
        4.4.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  13
        4.4.4.  Opportunities and Research Questions for COIN . . . .  13
-       4.4.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  13
-   5.  Immersive Devices . . . . . . . . . . . . . . . . . . . . . .  13
-     5.1.  Mobile Application Offloading . . . . . . . . . . . . . .  13
+       4.4.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  14
+   5.  Immersive Devices . . . . . . . . . . . . . . . . . . . . . .  14
+     5.1.  Mobile Application Offloading . . . . . . . . . . . . . .  14
        5.1.1.  Description . . . . . . . . . . . . . . . . . . . . .  14
        5.1.2.  Characterization  . . . . . . . . . . . . . . . . . .  14
-       5.1.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  15
-       5.1.4.  Opportunities and Research Questions for COIN . . . .  15
-       5.1.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  16
-     5.2.  Edge AR/VR  . . . . . . . . . . . . . . . . . . . . . . .  17
-   6.  Infrastructure Services . . . . . . . . . . . . . . . . . . .  17
-     6.1.  Distributed AI  . . . . . . . . . . . . . . . . . . . . .  17
-       6.1.1.  Description . . . . . . . . . . . . . . . . . . . . .  17
-       6.1.2.  Characterization  . . . . . . . . . . . . . . . . . .  17
-       6.1.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  18
-       6.1.4.  Opportunities and Research Questions for COIN . . . .  18
-       6.1.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  18
-     6.2.  Content Delivery Networks . . . . . . . . . . . . . . . .  19
-       6.2.1.  Description . . . . . . . . . . . . . . . . . . . . .  19
-       6.2.2.  Characterization  . . . . . . . . . . . . . . . . . .  19
+       5.1.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  16
+       5.1.4.  Opportunities and Research Questions for COIN . . . .  16
+       5.1.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  17
+     5.2.  Extended Reality (XR) and In-Network Computing  . . . . .  17
+       5.2.1.  Description . . . . . . . . . . . . . . . . . . . . .  17
+       5.2.2.  Characterization  . . . . . . . . . . . . . . . . . .  17
+       5.2.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  18
+       5.2.4.  Opportunities and Research Questions for COIN . . . .  19
+       5.2.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  20
+     5.3.  Personalised and interactive performing arts  . . . . . .  21
 
 
 
-Kunze, et al.             Expires 1 August 2021                 [Page 2]
+Kunze, et al.            Expires 19 August 2021                 [Page 2]
 
-Internet-Draft               COIN Use Cases                 January 2021
+Internet-Draft               COIN Use Cases                February 2021
 
 
-       6.2.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  19
-       6.2.4.  Opportunities and Research Questions for COIN . . . .  19
-       6.2.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  20
-     6.3.  CFaaS . . . . . . . . . . . . . . . . . . . . . . . . . .  20
-       6.3.1.  Description . . . . . . . . . . . . . . . . . . . . .  20
-       6.3.2.  Characterization  . . . . . . . . . . . . . . . . . .  20
-       6.3.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  21
-       6.3.4.  Opportunities and Research Questions for COIN . . . .  21
-       6.3.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  21
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  22
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  22
-   9.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  22
-   10. List of Contributors  . . . . . . . . . . . . . . . . . . . .  22
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .  23
-     11.2.  Informative References . . . . . . . . . . . . . . . . .  23
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  25
+       5.3.1.  Description . . . . . . . . . . . . . . . . . . . . .  21
+       5.3.2.  Characterization  . . . . . . . . . . . . . . . . . .  22
+       5.3.3.  Existing solutions  . . . . . . . . . . . . . . . . .  23
+       5.3.4.  Opportunities and Research Questions for COIN . . . .  23
+       5.3.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  24
+   6.  Infrastructure Services . . . . . . . . . . . . . . . . . . .  24
+     6.1.  Distributed AI  . . . . . . . . . . . . . . . . . . . . .  24
+       6.1.1.  Description . . . . . . . . . . . . . . . . . . . . .  24
+       6.1.2.  Characterization  . . . . . . . . . . . . . . . . . .  24
+       6.1.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  24
+       6.1.4.  Opportunities and Research Questions for COIN . . . .  25
+       6.1.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  25
+     6.2.  Content Delivery Networks . . . . . . . . . . . . . . . .  25
+       6.2.1.  Description . . . . . . . . . . . . . . . . . . . . .  25
+       6.2.2.  Characterization  . . . . . . . . . . . . . . . . . .  26
+       6.2.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  26
+       6.2.4.  Opportunities and Research Questions for COIN . . . .  26
+       6.2.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  27
+     6.3.  CFaaS . . . . . . . . . . . . . . . . . . . . . . . . . .  27
+       6.3.1.  Description . . . . . . . . . . . . . . . . . . . . .  27
+       6.3.2.  Characterization  . . . . . . . . . . . . . . . . . .  27
+       6.3.3.  Existing Solutions  . . . . . . . . . . . . . . . . .  27
+       6.3.4.  Opportunities and Research Questions for COIN . . . .  28
+       6.3.5.  Requirements  . . . . . . . . . . . . . . . . . . . .  28
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  29
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  29
+   9.  Conclusion  . . . . . . . . . . . . . . . . . . . . . . . . .  29
+   10. List of Use Case Contributors . . . . . . . . . . . . . . . .  29
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  29
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .  29
+     11.2.  Informative References . . . . . . . . . . . . . . . . .  30
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  32
 
 1.  Introduction
 
-   The Internet bases on a best-effort network with limited guarantees
-   regarding the timely and successful transmission of packets.
-   Functionality is generally provided by the end-hosts while the
-   network is kept simple and only intended to forward the packets.
-   This design-choice is suitable for general Internet-based
-   applications and has helped in the rapid growth of the Internet.
-   However, there are several domains which, e.g., demand a number of
-   strict performance guarantees that cannot be provided over regular
-   best-effort networks.  In this context, flexibly distributing the
-   computation tasks across the network can help to achieve the
-   guarantees and increase the overall performance.
+   The Internet is a best-effort network that offers limited guarantees
+   regarding the timely and successful transmission of packets.  Data
+   manipulation and protocol functionality is generally provided by the
+   end-hosts while the network is kept simple and only intended as a
+   "store and forward" packet facility.  This design-choice is suitable
+   for a wide variety of applications and has helped in the rapid growth
+   of the Internet.  However, there are several domains which, e.g.,
+   demand a number of strict performance guarantees that cannot be
+   provided over regular best-effort networks or require more closed
+   loop integration to manage data flows.  In this context, flexibly
+   distributing the computation tasks across the network can help to
+   achieve the guarantees and increase the overall performance.
 
-   The different domains, however, have different requirements and it is
-   unclear whether there can be a common solution to all COIN scenarios
-   or if solutions have to be tailored to each scenario.
 
-   This document first presents applications and requirements of some
-   domains to illustrate the importance of COIN for realizing advanced
-   applications.  Based on these discussion, the draft then creates a
-   taxonomy of COIN scenarios with the goal of guiding future work.
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 3]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   However, different domains and different applications have different
+   requirements and it remains unclear and the topic of academic
+   research whether there can be a common architecture to all COIN
+   scenarios, such as common data or intelligencee layer [reference to
+   come] or if solutions have to be tailored to each scenario and
+   eventually orchestrate [[reference to come].
+
+   This document presents a series of applications and their
+   requirements to illustrate the importance of COIN for realizing
+   advanced applications.  Based on these, the draft aims to create a
+   taxonomy of elementary COIN scenarios with the goal of guiding future
+   research work.
 
 2.  Terminology
 
    Programmable network devices (PNDs): Network devices, such as network
    interface cards and switches, which are programmable, e.g., using P4
-
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 3]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
+   or other languages.
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
@@ -178,10 +197,10 @@ Internet-Draft               COIN Use Cases                 January 2021
 
    The use cases in this draft aim at outlining the specific
    capabilities that in-networking capabilities may bring to their
-   realization.  To better capture this goal, we will use the following
-   taxonomy to describe each of the use cases:
+   realization.  To attain this goal, we will use the following taxonomy
+   to describe each of the use cases:
 
-   1.  Description: explanation of the experienced use case behavior
+   1.  Description: explanation of the use case behavior
 
    2.  Characterization: explanation of the services that are being
        realized and the semantics of interactions in the use case
@@ -189,13 +208,23 @@ Internet-Draft               COIN Use Cases                 January 2021
    3.  Existing solutions: if existing, outline current methods of
        realizing the use case
 
-   4.  Opportunities and Research Questions for COIN: outline how PNDs
+   4.  Opportunities and research questions for COIN: outline how PNDs
        may support or improve on the use case case in terms of
        performance and other metrics and state essential questions that
        are suitable for guiding research.
 
    5.  Requirements: describe the requirements for any solutions that
        may need development along the opportunities outlined in item 4
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 4]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 4.  Industrial Use Cases
 
@@ -218,14 +247,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    presents a promising starting point because it allows to flexibly
    distribute computation tasks across the network which can help to
    manage dynamic changes.  As specifying general requirements for the
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 4]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    industrial production domain is difficult due to the mentioned
    diversity, this document next characterizes and analyzes different
    scenarios to showcase potential requirements for the industrial
@@ -251,6 +272,16 @@ Internet-Draft               COIN Use Cases                 January 2021
    proprietary equipment with proprietary protocols only supporting
    hosts of specific vendors.
 
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 5]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
     --------
     |Sensor| ------------|              ~~~~~~~~~~~~      ------------
     --------       -------------        { Internet } --- |Remote Cloud|
@@ -274,14 +305,6 @@ Internet-Draft               COIN Use Cases                 January 2021
 
      Figure 1: Industrial networks show a high level of heterogeneity.
 
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 5]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
 4.2.  In-Network Control / Time-sensitive applications
 
 4.2.1.  Description
@@ -304,6 +327,16 @@ Internet-Draft               COIN Use Cases                 January 2021
    theoretically be moved to more powerful devices.  These devices are
    no longer close to the controlled objects and induce additional
    latency.
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 6]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 4.2.2.  Characterization
 
@@ -330,14 +363,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    depends on the timely reception of the sensor feedback, because the
    controller can only react if it is notified of changes in the system
    state.  Depending on the dynamics of the controlled system, the
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 6]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    control can be subject to tight latency constraints, often in the
    single-digit millisecond range.  While low latencies are essential,
    there is an even greater need for stable and deterministic levels of
@@ -355,6 +380,19 @@ Internet-Draft               COIN Use Cases                 January 2021
    which makes such control processes inflexible and difficult to
    manage.  Moving computations to more freely programmable devices thus
    has the potential of significantly improving the flexibility.
+
+
+
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 7]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 4.2.4.  Opportunities and Research Questions for COIN
 
@@ -386,14 +424,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    *  How can one derive the simplified versions of the overall
       controller?
 
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 7]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
       -  How complex can they become?
 
       -  How can one take the limited computational precision of
@@ -410,6 +440,15 @@ Internet-Draft               COIN Use Cases                 January 2021
    latencies.
 
    Req 4.2.2: Control approaches SHOULD provide low latencies.
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 8]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    Req 4.2.3: The interaction between the in-network control function
    and the overall controller SHOULD be explicit.
@@ -441,15 +480,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    a subordinate problem for this use case, moving all data to off-
    premise locations primarily poses infrastructural challenges.
 
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 8]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
 4.3.2.  Characterization
 
    Processes in the industrial domain are monitored by distributed
@@ -468,6 +498,14 @@ Internet-Draft               COIN Use Cases                 January 2021
    data using the companies' Internet access which is typically limited
    to a few hundred of Mbit/s.  While large networking companies can
    simply upgrade their infrastructure, most industrial companies rely
+
+
+
+Kunze, et al.            Expires 19 August 2021                 [Page 9]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
    on traditional ISPs for their Internet access.  Higher access speeds
    are hence tied to higher costs and, above all, subject to the supply
    of the ISPs and consequently not always available.  A major challenge
@@ -499,13 +537,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    the amount of transmitted data in a meaningful way using in-network
    computing:
 
-
-
-Kunze, et al.             Expires 1 August 2021                 [Page 9]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    1.  filtering out redundant or unnecessary data
 
    2.  aggregating data by applying pre-processing steps within the
@@ -522,6 +553,14 @@ Internet-Draft               COIN Use Cases                 January 2021
    configure or not configurable at all which is why their resolution or
    sampling frequency is often larger than required.  Consequently, it
    is likely that more data is transmitted than is needed or desired.
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 10]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    A trivial idea for reducing the amount of data is to filter out
    redundant or undesired data before it leaves the premise using simple
@@ -555,13 +594,6 @@ Internet-Draft               COIN Use Cases                 January 2021
 
    *  How can traffic filtering be signaled to the end-hosts?
 
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 10]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
 4.3.4.2.  In-Network (Pre-)Processing
 
    There are manifold computations that can be performed on the sensor
@@ -578,6 +610,13 @@ Internet-Draft               COIN Use Cases                 January 2021
    steps can be deployed in the on-premise network to reduce the overall
    data volume and potentially speed up the processing time in the
    cloud.
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 11]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    Related work has already shown that in-network aggregation can help
    to improve the performance of distributed ML applications [SAPIO].
@@ -610,14 +649,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    Req 4.3.2: Filters or preprocessors MAY leverage packet header and
    payload information
 
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 11]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    Req 4.3.3: Filters or preprocessors SHOULD be reconfigurable at run-
    time
 
@@ -632,6 +663,16 @@ Internet-Draft               COIN Use Cases                 January 2021
    well-defined and interactions are simple.  Simple safety measures
    like emergency switches at the working positions are enough to
    provide a decent level of safety.
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 12]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    Modern factories are characterized by increasingly dynamic and
    complex environments with new interaction scenarios between humans
@@ -664,16 +705,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    worthwhile to investigate whether such solutions can introduce
    additional safety measures.
 
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 12]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
 4.4.3.  Existing Solutions
 
    Note: Will be added later.
@@ -690,6 +721,14 @@ Internet-Draft               COIN Use Cases                 January 2021
    if a human enters a defined safety zone, robots are stopped to
    prevent injuries.  More advanced concepts could also include image
    data or combine arbitrary sensor data.
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 13]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    Opportunities:
 
@@ -715,21 +754,6 @@ Internet-Draft               COIN Use Cases                 January 2021
 
 5.1.  Mobile Application Offloading
 
-
-
-
-
-
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 13]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
 5.1.1.  Description
 
    The scenario can be exemplified in an immersive gaming application,
@@ -752,6 +776,16 @@ Internet-Draft               COIN Use Cases                 January 2021
    mobile application can be categorized into any of three, "receiving",
    "processing" and "displaying" function groups.
 
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 14]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
    Any device may realize one or more of the micro-services of an
    application and expose them to the execution environment.  When the
    micro-service sequence is executed on a single device, the outcome is
@@ -772,19 +806,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    realized as a 'service deployment' process, combining the local app
    installation with a distributed micro-service deployment (and
    orchestration) on most suitable AppCentreS ('processing server').
-
-
-
-
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 14]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
 
                                  +----------+ Processing Server
                Mobile            | +------+ |
@@ -813,6 +834,14 @@ Internet-Draft               COIN Use Cases                 January 2021
          +---------+            | Server  |
                TV                +---------+
 
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 15]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
              Figure 3: Application Function Offloading Example.
 
    Such localized deployment could, for instance, be provided by a
@@ -832,15 +861,6 @@ Internet-Draft               COIN Use Cases                 January 2021
 5.1.4.  Opportunities and Research Questions for COIN
 
    Opportunities:
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 15]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
 
    *  execution of app-level micro-services (service deployment in
       [I-D.draft-sarathchandra-coin-appcentres-03])
@@ -868,6 +888,16 @@ Internet-Draft               COIN Use Cases                 January 2021
    *  What in-network capabilities may support the execution of micro-
       services?
 
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 16]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
 5.1.5.  Requirements
 
    Req 5.1.1: Any app-centric execution environment MUST provide means
@@ -884,20 +914,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    for pinning the execution of a specific micro-service to a specific
    resource instance in the distributed environment.
 
-
-
-
-
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 16]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    Req 5.1.4: Any app-centric execution environment SHOULD provide means
    for packaging micro-services for deployments in distributed networked
    computing environments.  The packaging MAY include any constraints
@@ -911,12 +927,378 @@ Internet-Draft               COIN Use Cases                 January 2021
    for real-time synchronization and consistency of distributed
    application states.
 
-5.2.  Edge AR/VR
+5.2.  Extended Reality (XR) and In-Network Computing
 
-   NOTE: Could be transfered from (expired)
-   [I-D.draft-montpetit-coin-xr-03]
+5.2.1.  Description
 
-   Additional potential sources: [I-D.draft-geng-rtgwg-cfn-req-00]
+   Virtual Reality (VR) and Augmented Reality (AR) taken together as
+   Extended Reality (XR) are at the center of a number of advances in
+   interactive technologies.  While initially associated with gaming and
+   entertainment, XR applications now include remote diagnosis,
+   maintenance, telemedicine, manufacturing and assembly, autonomous
+   systems, smart cities, and immersive classrooms.
+
+5.2.2.  Characterization
+
+   XR is one example of the Multisource-Multidestination Problem that
+   combines video, haptics, and tactile experiences in interactive or
+   networked multi-party and social interactions.  Thus, XR is difficult
+   to deliver with a client-server cloud-based solution as it requires a
+   combination of: stream synchronization, low delays and delay
+   variations, means to recover from losses and optimized caching and
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 17]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   rendering as close as possible to the user at the network edge.  Many
+   XR services that involve video holography and haptics, require very
+   low delay or generate large amounts of data, both requiring a careful
+   look at data filtering and reduction, functional distribution and
+   partitioning.  Hence, XR uses recent advances in in-network
+   programming, distributed networks, orchestration and resource
+   discovery to support the XR advanced immersive requirements.  It is
+   important to note that the use of in-network computing for XR does
+   not imply a specific protocol but targets an architecture enabling
+   the deployment of the services.  This includes computing in the nodes
+   from content source to destination.
+
+5.2.3.  Existing Solutions
+
+   Related XR or XR-enabling solutions using in-network computation or
+   related technologies include:
+
+   *  Enabling Scalable Edge Video Analytics with Computing-In-Network
+      (Jun Chen Jiang of the University of Chicago): this work brings a
+      periodical re-profiling to adapt the video pipeline to the dynamic
+      video content that is a characteristic of XR.  The implication is
+      that "need tight network-app coupling" for real time video
+      analytics.
+
+   *  VR journalism, interactive VR movies and meetings in cyberspace
+      (many projects PBS, MIT interactive documentary lab, Huawei
+      research - references to be provided): typical VR is not made for
+      multiparty and these applications require a tight coupling of the
+      local and remote rendering and data capture and combinations of
+      cloud (for more static information) and edge (for dynamic
+      content).
+
+   *  Local rendering of holographic content using near field
+      computation (heritage from advances cockpit interactions - looking
+      for non military papers): a lot has been said recently of the
+      large amounts of data necessary to transmit and use holographic
+      imagery in communications.  Transmitting the near field
+      information and rendering the image locally allows to reduce the
+      data rates by 1 or 2.
+
+   *  ICE-AR [ICE] project at UCLA (Jeff Burke): while this project is a
+      showcase of the NDN network artchitecture it also uses a lof of
+      edge-cloud capabilities for example for inter-server games and
+      advanced video applications.
+
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 18]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+5.2.4.  Opportunities and Research Questions for COIN
+
+   Opportunities:
+
+   In-network computing for XR profits from the heritage of extensive
+   research in the past years on Information Centric Networking, Machine
+   Learning, network telemetry, imaging and IoT as well as distributed
+   security and in-network coding.  The opportunities include:
+
+   *  Reduced latency: the physical distance between the content cloud
+      and the users must be short enough to limit the propagation delay
+      to the 20 ms usually cited for XR applications; the use of local
+      CPU and IoT devices for range of interest (RoI) detection and
+      fynamic rendering may enable this.
+
+   *  Video transmission: better transcoding and use of advanced
+      context-based compression algorithms, pre-fetching and pre-caching
+      and movement prediction not only in the cloud.
+
+   *  Monitoring: telemetry is a major research topic for COIN and it
+      enables to monitor and distribute the XR services.
+
+   *  Network access: push some networking functions in the kernel space
+      into the user space to enable the deployment of stream specific
+      algorithms for congestion control and application-based load
+      balancing based on machine learning and user data patterns.
+
+   *  Functional decomposition: functional decomposition, localization
+      and discovery of computing and storage resources in the network.
+      But it is not only finding the best resources but qualifying those
+      resources in terms of reliability especially for mission critical
+      services in XR (medicine for example).  This could include
+      intelligence services.
+
+   Research Questions:
+
+   There is a need for more research resource allocation problems at the
+   edge to enable interactive operation and quality of experience in VR.
+   These include multi-variate and heterogeneous goal optimization
+   problems requiring advanced analysis.  Image rendering and video
+   processing in XR leverages different HW capabilities combinations of
+   CPU and GPU.  Research questions include:
+
+   *  Can current programmable network entities be sufficient to provide
+      the speed required to provide and execute complex filtering
+      operations that includes metadata analysis for complex and dynamic
+      scene rendering?
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 19]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   *  How can the interoperability of CPU/GPU be optimized to combine
+      low level packet filteting with the higher layer processors needed
+      for image processing and haptics?
+
+   *  Can the use of joint learning algorithms across both data center
+      and edge computers be used to create optimal functionality
+      allocation and the creation of semi-permanent datasets and
+      analytics for usage trending resulting in better localization of
+      XR functions?
+
+   *  Can COIN improve the dynamic distribution of control, forwarding
+      and storage resources and related usage models in XR?
+
+5.2.5.  Requirements
+
+   XR requirements include the need to provide real-time interactivity
+   for immersive and increasingly mobile immersive applications with
+   tactile and time-sensitive data and high bandwidth for high
+   resolution images and local rendering for 3D images and holograms.
+   Since XR deals with personal information and potentially protected
+   content XR must also provide a secure environment and ensure user
+   privacy.  Additionally, the sheer amount of data needed for and
+   generated by the XR applications can use recent trend analysis and
+   mechanisms, including machine learning to find these trends and
+   reduce the size of the data sets.  The requirements can be summarized
+   as:
+
+   Req 5.2.1: Allow joint collaboration.
+
+   Req 5.2.2: Provide multi-views.
+
+   Req 5.2.3: Include extra streams dynamically for data intensive
+   services, manufacturing and industrial processes.
+
+   Req 5.2.4: Enable multistream, multidevice, multidestination
+   applications.
+
+   Req 5.2.5: Use new Internet Architectures at the edge for improved
+   performance and performance management.
+
+   Req 5.2.6: Integrate with holography, 3D displays and image rendering
+   processors.
+
+   Req 5.2.7 All the use of multicast distribution and processing as
+   well as peer to peer distribution in bandwidth and capacity
+   constrained environments.
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 20]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   Req 5.2.8 Evaluate the integration local and fog caching with cloud-
+   based pre-rendering.
+
+   Req 5.2.9 Evaluate ML-based congestion control to manage XR sessions
+   quality of service and to determine how to priortize data.
+
+   Req 5.2.10 Consider higher layer protocols optimization to reduce
+   latency especially in data intensive applications at the edge.
+
+   Req 5.2.11 Provide trust, including blockchains and smart-contracts
+   to enable secure community building across domains.
+
+   Req 5.2.12 Support nomadicity and mobility (link to mobile edge).
+
+   Req 5.2.13 Use 5G slicing to create independent session-driven
+   processing/rendering.
+
+   Req 5.2.14 Provide performance optimization by data reduction,
+   tunneling, session virtualization and loss protection.
+
+   Req 5.2.15 Use AI/ML for trend analysis and data reduction when
+   appropriate.
+
+5.3.  Personalised and interactive performing arts
+
+5.3.1.  Description
+
+   This use case covers live productions of the performing arts where
+   the performers and audience are in different physical locations.  The
+   performance is conveyed to the audience through multiple networked
+   streams which may be tailored to the requirements of individual
+   audience members; and the performers receive live feedback from the
+   audience.
+
+   There are two main aspects: i) to emulate as closely as possible the
+   experience of live performances where the performers and audience are
+   co-located in the same physical space, such as a theatre; and ii) to
+   enhance traditional physical performances with features such as
+   personalisation of the experience according to the preferences or
+   needs of the audience members.
+
+   Examples of personalisation include:
+
+   *  viewpoint selection such as choosing a specific seat in the
+      theatre or for more advanced positioning of the audience member's
+      viewpoint outside of the traditional seating - amongst, above or
+      behind the performers (but within some limits which may be imposed
+      by the performers or the director for artistic reasons);
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 21]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   *  augmentation of the performance with subtitles, audio-description,
+      actor-tagging, language translation, advertisements/product-
+      placement, other enhancements/filters to make the performance
+      accessible to disabled audience members (removal of flashing
+      images for epileptics, alternative colour schemes for colour-blind
+      audience members, etc.).
+
+5.3.2.  Characterization
+
+   There are several chained functional entities which are candidates
+   for in-network processing.
+
+   *  Performer aggregation and editing functions
+
+   *  Distribution and encoding functions
+
+   *  Personalisation functions
+
+      -  to select which of the existing streams should be forwarded to
+         the audience member
+
+      -  to augment streams with additional metadata such as subtitles
+
+      -  to create new streams after processing existing ones: to
+         interpolate between camera angles to create a new viewpoint or
+         to render point clouds from the audience member's chosen
+         perspective
+
+      -  to undertake remote rendering according to viewer position,
+         e.g. creation of VR headset display streams according to
+         audience head position - when this processing has been
+         offloaded from the viewer's end-system to the in-network
+         function due to limited processing power in the end-system, or
+         to limited network bandwidth to receive all of the individual
+         streams to be processed.
+
+   *  Audience feedback sensor processing functions
+
+   *  Audience feedback aggregation functions
+
+   These are candidates for in-network processing rather than being
+   located in end-systems (at the performers' site, the audience
+   members' premises or in a central cloud location) for several
+   reasons:
+
+   *  personalisation of the performance to audience preferences and
+      requirements makes it unfeasible for this to be done at the
+      performer premises: it will require large amounts of processing
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 22]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+      power to process individual personalised streams as well as large
+      amounts of network bandwidth to transmit personalised streams to
+      each viewer.
+
+   *  rendering of VR headset content to follow viewer head movements
+      has an upper bound on lag to maintain viewer QoE.
+
+   *  viewer devices may not have the processing-power to undertake the
+      personalisation or the viewers' network may not have the capacity
+      to receive all of the constituent streams to undertake the
+      personalisation functions.
+
+   *  there are strict latency requirements for the live and interactive
+      aspects that require the deviation from the direct path between
+      performers and audience is minimised, reducing the opportunity to
+      leverage large-scale processing capabilities at centralised data-
+      centres.
+
+5.3.3.  Existing solutions
+
+   To be added.
+
+5.3.4.  Opportunities and Research Questions for COIN
+
+   Opportunities:
+
+   *  See Characterization.
+
+   Research Questions:
+
+   *  Where should the aggregation, encoding and personalisation
+      functions be located?  Close to the performers or close to the
+      audience members?
+
+   *  How far away from the direct network path from performer to
+      audience can they be located, considering the latency implications
+      of path-stretch and the availability of processing capacity?
+
+   *  How to achieve network synchronisation across multiple streams to
+      allow for merging, audio-video interpolation and other cross-
+      stream processing functions that require time synchronisation for
+      the integrity of the output?
+
+
+
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 23]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+5.3.5.  Requirements
+
+   The chain of functions and propagation over the interconnecting
+   network segments for performance capture, aggregation, distribution,
+   personalisation, consumption, capture of audience response, feedback
+   processing, aggregation, rendering should be achieved within an upper
+   bound of latency (the tolerable amount is to be defined, but in the
+   order of 100s of ms to mimic performers perceiving audience feedback,
+   such as laugher or other emotional responses in a theatre setting).
 
 6.  Infrastructure Services
 
@@ -943,17 +1325,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    problem to a certain extent albeit with little flexibility in
    distributing the execution of the AI logic.
 
-
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 17]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
 6.1.3.  Existing Solutions
 
    Reasoning frameworks, such as TensorFlow, may be utilized for the
@@ -964,6 +1335,16 @@ Internet-Draft               COIN Use Cases                 January 2021
 
    NOTE: material on solutions like ETSI MEC and 3GPP work will be added
    here later
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 24]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 6.1.4.  Opportunities and Research Questions for COIN
 
@@ -1001,15 +1382,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    certain logical execution points (and their associated physical
    locations).
 
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 18]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    Req 6.1.2: Any app-centric execution environment MUST provide support
    for app/micro-service specific invocation protocols.
 
@@ -1021,6 +1393,14 @@ Internet-Draft               COIN Use Cases                 January 2021
    Networks (CDNs) storing said content closer to end users for latency
    reduced delivery with DNS-based indirection being utilized to serve
    the request on behalf of the origin server.
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 25]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 6.2.2.  Characterization
 
@@ -1058,14 +1438,6 @@ Internet-Draft               COIN Use Cases                 January 2021
       interconnection and collective communication in
       [I-D.draft-sarathchandra-coin-appcentres-03])
 
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 19]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    Research Questions: in addition to those for Section 5.1,
 
    *  how to utilize L2 multicast to improve on CDN designs?  How to
@@ -1076,6 +1448,15 @@ Internet-Draft               COIN Use Cases                 January 2021
 
    *  how could storage be traded off against frequent, multicast-based,
       replication (see [FCDN])
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 26]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    *  what scalability limits exist for L2 multicast capabilities?  How
       to overcome them?
@@ -1114,14 +1495,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    road-side infrastructure in vehicular scenarios.  The resulting
    dynamic demand-supply matching establishes a dynamic nature of the
    compute fabric that in turn requires trust relationships to be built
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 20]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    dynamically between the resource provider(s) and the CFaaS provider.
    This also requires the communication resources to be dynamically
    adjusted to interconnect all resources suitably into the (tenant-
@@ -1130,6 +1503,16 @@ Internet-Draft               COIN Use Cases                 January 2021
 6.3.3.  Existing Solutions
 
    NOTE: material on solutions will be added here later
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 27]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 6.3.4.  Opportunities and Research Questions for COIN
 
@@ -1169,15 +1552,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    being utilized for the app execution; those resources include, but
    are not limited to, end user provided resources.
 
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 21]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    Req 6.3.3: Any app-specific execution environment MUST provide means
    to optimize the inter-connection of compute resources, including
    those dynamically added and removed during the provisioning of the
@@ -1185,6 +1559,16 @@ Internet-Draft               COIN Use Cases                 January 2021
 
    Req 6.3.4: Any app-specific execution environment MUST provide means
    for ensuring availability and usage of resources is accounted for.
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 28]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
 7.  Security Considerations
 
@@ -1217,26 +1601,30 @@ Internet-Draft               COIN Use Cases                 January 2021
    NOTE: Further aspects will be added once more use cases are added to
    the draft.
 
-10.  List of Contributors
+10.  List of Use Case Contributors
 
-   *  Ike Kunze and Klaus Wehrle have contributed the preceding document
-      [I-D.draft-kunze-coin-industrial-use-cases-04] as well as the
-      industrial use cases (Section 4).
+   *  Ike Kunze and Klaus Wehrle have contributed the industrial use
+      cases (Section 4).
 
    *  Dirk Trossen has contributed the following use cases: Section 5.1,
       Section 6.1, Section 6.2, Section 6.3.
 
+   *  Marie-Jose Montpetit has contributed the XR use case (Section 5.2)
 
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 22]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
+   *  David Griffin and Miguel Rio have contributed the use case on
+      performing arts Section 5.3
 
 11.  References
 
 11.1.  Normative References
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 29]
+
+Internet-Draft               COIN Use Cases                February 2021
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1244,6 +1632,12 @@ Internet-Draft               COIN Use Cases                 January 2021
               <https://www.rfc-editor.org/info/rfc2119>.
 
 11.2.  Informative References
+
+   [CABLE]    Hinds, A., "The Near Future of Immersive Experiences:
+              Where We Are on the Journey, What Lies Ahead, and What It
+              Takes to Get There.", SIGCOMM 2018 Workshop on AR/VR. ,
+              2018, <http://conferences.sigcomm.org/sigcomm/2018/
+              workshop-arvr.html>.
 
    [FCDN]     Al-Naday, M., Reed, M.J., Riihijarvi, J., Trossen, D.,
               Thomos, N., and M. Al-Khalidi, "A Flexible and Efficient
@@ -1260,36 +1654,6 @@ Internet-Draft               COIN Use Cases                 January 2021
    [GRPC]     "High performance open source universal RPC framework",
               <https://grpc.io/>.
 
-   [I-D.draft-geng-rtgwg-cfn-req-00]
-              Geng, L. and P. Willis, "Compute First Networking (CFN)
-              Scenarios and Requirements", Work in Progress, Internet-
-              Draft, draft-geng-rtgwg-cfn-req-00, 4 November 2019,
-              <http://www.ietf.org/internet-drafts/draft-geng-rtgwg-cfn-
-              req-00.txt>.
-
-   [I-D.draft-kunze-coin-industrial-use-cases-04]
-              Kunze, I., Wehrle, K., and D. Trossen, "Use Cases for In-
-              Network Computing", Work in Progress, Internet-Draft,
-              draft-kunze-coin-industrial-use-cases-04, 2 November 2020,
-              <http://www.ietf.org/internet-drafts/draft-kunze-coin-
-              industrial-use-cases-04.txt>.
-
-   [I-D.draft-montpetit-coin-xr-03]
-              Montpetit, M., "In Network Computing Enablers for Extended
-              Reality", Work in Progress, Internet-Draft, draft-
-              montpetit-coin-xr-03, 8 July 2019, <http://www.ietf.org/
-              internet-drafts/draft-montpetit-coin-xr-03.txt>.
-
-
-
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 23]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
-
    [I-D.draft-sarathchandra-coin-appcentres-03]
               Trossen, D., Sarathchandra, C., and M. Boniface, "In-
               Network Computing for App-Centric Micro-Services", Work in
@@ -1305,6 +1669,19 @@ Internet-Draft               COIN Use Cases                 January 2021
               <http://www.ietf.org/internet-drafts/draft-fink-coin-sec-
               priv-01.txt>.
 
+
+
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 30]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
    [I-D.mcbride-edge-data-discovery-overview]
               McBride, M., Kutscher, D., Schooler, E., Bernardos, C.,
               Lopez, D., and X. Foy, "Edge Data Discovery for COIN",
@@ -1312,6 +1689,18 @@ Internet-Draft               COIN Use Cases                 January 2021
               discovery-overview-05, 1 November 2020,
               <http://www.ietf.org/internet-drafts/draft-mcbride-edge-
               data-discovery-overview-05.txt>.
+
+   [ICE]      Burke, J., "ICN-Enabled Secure Edge Networking with
+              Augmented Reality: ICE-AR.", ICE-AR Presentation at
+              NDNCOM. , 2018, <https://www.nist.gov/news-
+              events/events/2018/09/named-data-networking-community-
+              meeting-2018>.
+
+   [INTER]    Bastug, E., Bennis, M., Medard, M., and M. Debbah, "Toward
+              Interconnected Virtual Reality: Opportunities, Challenges,
+              and Enablers", IEEE Communications Magazine Vol. 55, pp.
+              110-117, DOI 10.1109/mcom.2017.1601089, 2017,
+              <https://doi.org/10.1109/mcom.2017.1601089>.
 
    [MPI]      Vishnu, A., Siegel, C., and J. Daily, "Scaling Distributed
               Machine Learning with In-Network Aggregation",
@@ -1326,6 +1715,12 @@ Internet-Draft               COIN Use Cases                 January 2021
               CPS-SPC'19, DOI 10.1145/3338499.3357357, 2019,
               <https://doi.org/10.1145/3338499.3357357>.
 
+   [RICE]     Król, M., Habak, K., Oran, D., Kutscher, D., and I.
+              Psaras, "RICE: remote method invocation in ICN",
+              Proceedings of the 5th ACM Conference on Information-
+              Centric Networking, DOI 10.1145/3267955.3267956, September
+              2018, <https://doi.org/10.1145/3267955.3267956>.
+
    [RUETH]    Rüth, J., Glebke, R., Wehrle, K., Causevic, V., and S.
               Hirche, "Towards In-Network Industrial Feedback Control",
               Proceedings of the 2018 Morning Workshop on In-
@@ -1336,15 +1731,21 @@ Internet-Draft               COIN Use Cases                 January 2021
               Network Aggregation", 2019,
               <https://arxiv.org/abs/1903.06701>.
 
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 31]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   [SOCIAL]   Montpetit, M. and M. Medard, "Social Television: Enabling
+              Technologies and Architectures", Proceedings of the
+              IEEE Vol. 100, pp. 1395-1399,
+              DOI 10.1109/jproc.2012.2189804, May 2012,
+              <https://doi.org/10.1109/jproc.2012.2189804>.
+
    [TSN]      "IEEE Time-Sensitive Networking (TSN) Task Group",
               <https://1.ieee802.org/tsn/>.
-
-
-
-Kunze, et al.             Expires 1 August 2021                [Page 24]
-
-Internet-Draft               COIN Use Cases                 January 2021
-
 
    [VESTIN]   Vestin, J., Kassler, A., and J. Akerberg, "FastReact: In-
               Network Control and Caching for Industrial Control
@@ -1388,6 +1789,17 @@ Authors' Addresses
 
 
 
+Kunze, et al.            Expires 19 August 2021                [Page 32]
+
+Internet-Draft               COIN Use Cases                February 2021
+
+
+   Marie-José Montpetit
+   Concordia University
+   Montreal
+   Canada
+
+   Email: marie@mjmontpetit.com
 
 
 
@@ -1397,4 +1809,40 @@ Authors' Addresses
 
 
 
-Kunze, et al.             Expires 1 August 2021                [Page 25]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Kunze, et al.            Expires 19 August 2021                [Page 33]
