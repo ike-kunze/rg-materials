@@ -16,6 +16,7 @@ author:
     ins: I. Kunze
     name: Ike Kunze
     org: RWTH Aachen University
+    abbrev: RWTH Aachen
     email: kunze@comsys.rwth-aachen.de
     street: Ahornstr. 55
     city: Aachen
@@ -25,6 +26,7 @@ author:
     ins: K. Wehrle
     name: Klaus Wehrle
     org: RWTH Aachen University
+    abbrev: RWTH Aachen
     email: wehrle@comsys.rwth-aachen.de
     street: Ahornstr. 55
     city: Aachen
@@ -109,18 +111,18 @@ informative:
         ins: M. Al-Khalidi
     date: false    
     target: https://arxiv.org/pdf/1803.00876.pdf 
-  SOCIAL: DOI.10.1109/JPROC.2012.2189804
-  RICE: DOI.10.1145/3267955.3267956
-  INTER: DOI.10.1109/MCOM.2017.1601089
-  CABLE:
-    title: >
-      The Near Future of Immersive Experiences: Where We Are on the Journey, What Lies Ahead, and What It Takes to Get There.
-    author:
-      -
-        ins: A. Hinds
-    date: 2018    
-    target: http://conferences.sigcomm.org/sigcomm/2018/workshop-arvr.html
-    seriesinfo: SIGCOMM 2018 Workshop on AR/VR.
+  #SOCIAL: DOI.10.1109/JPROC.2012.2189804
+  #RICE: DOI.10.1145/3267955.3267956
+  #INTER: DOI.10.1109/MCOM.2017.1601089
+  #CABLE:
+  #  title: >
+  #    The Near Future of Immersive Experiences: Where We Are on the Journey, What Lies Ahead, and What It Takes to Get There.
+  #  author:
+  #    -
+  #      ins: A. Hinds
+  #  date: 2018    
+  #  target: http://conferences.sigcomm.org/sigcomm/2018/workshop-arvr.html
+  #  seriesinfo: SIGCOMM 2018 Workshop on AR/VR.
   ICE:
     title: >
       ICN-Enabled Secure Edge Networking with Augmented Reality: ICE-AR.
@@ -149,8 +151,7 @@ This design-choice is suitable for a wide variety of applications and has helped
 However, there are several domains which, e.g., demand a number of strict performance guarantees that cannot be provided over regular best-effort networks or require more closed loop integration to manage data flows.
 In this context, flexibly distributing the computation tasks across the network can help to achieve the guarantees and increase the overall performance.
 
-However, different domains and different applications have different requirements and it remains unclear and the topic of academic research whether there can be a common architecture to all COIN scenarios, such as common data or intelligencee layer [reference to come] or if solutions have to be tailored to each scenario and eventually orchestrate [[reference to come].
-
+However, different domains and different applications have different requirements and it remains unclear and the topic of academic research whether there can be a common solution to all COIN scenarios or if solutions have to be tailored to each scenario.
 
 This document presents a series of applications and their requirements to illustrate the importance of COIN for realizing advanced applications. 
 Based on these, the draft aims to create a taxonomy of elementary COIN scenarios with the goal of guiding future research work.
@@ -464,7 +465,7 @@ Req 4.4.1: COIN-based safety measures MUST NOT degrade existing safety measures.
 
 Req 4.4.2: COIN-based safety measures MAY enhance existing safety measures.
 
-# Immersive Devices {#immersiveDevices}
+# Immersive Experiences {#immersiveExperiences}
 
 ## Mobile Application Offloading {#mobileAppOffload}
 
@@ -566,7 +567,7 @@ Research Questions:
 
 
 
-## Extended Reality (XR) and In-Network Computing {#XR}
+## Extended Reality (XR) {#XR}
 
 ### Description
 
@@ -650,23 +651,23 @@ Req 5.2.5: Use new Internet Architectures at the edge for improved performance a
 
 Req 5.2.6: Integrate with holography, 3D displays and image rendering processors.
 
-Req 5.2.7 All the use of multicast distribution and processing as well as peer to peer distribution in bandwidth and capacity constrained environments.
+Req 5.2.7: All the use of multicast distribution and processing as well as peer to peer distribution in bandwidth and capacity constrained environments.
 
-Req 5.2.8 Evaluate the integration local and fog caching with cloud-based pre-rendering.
+Req 5.2.8: Evaluate the integration local and fog caching with cloud-based pre-rendering.
 
-Req 5.2.9 Evaluate ML-based congestion control to manage XR sessions quality of service and to determine how to priortize data.
+Req 5.2.9: Evaluate ML-based congestion control to manage XR sessions quality of service and to determine how to priortize data.
 
-Req 5.2.10 Consider higher layer protocols optimization to reduce latency especially in data intensive applications at the edge.
+Req 5.2.10: Consider higher layer protocols optimization to reduce latency especially in data intensive applications at the edge.
 
-Req 5.2.11 Provide trust, including blockchains and smart-contracts to enable secure community building across domains.
+Req 5.2.11: Provide trust, including blockchains and smart-contracts to enable secure community building across domains.
 
-Req 5.2.12 Support nomadicity and mobility (link to mobile edge).
+Req 5.2.12: Support nomadicity and mobility (link to mobile edge).
 
-Req 5.2.13 Use 5G slicing to create independent session-driven processing/rendering.
+Req 5.2.13: Use 5G slicing to create independent session-driven processing/rendering.
 
-Req 5.2.14 Provide performance optimization by data reduction, tunneling, session virtualization and loss protection.
+Req 5.2.14: Provide performance optimization by data reduction, tunneling, session virtualization and loss protection.
 
-Req 5.2.15 Use AI/ML for trend analysis and data reduction when appropriate.
+Req 5.2.15: Use AI/ML for trend analysis and data reduction when appropriate.
 
 
 
@@ -908,5 +909,5 @@ NOTE: Further aspects will be added once more use cases are added to the draft.
 
 * Ike Kunze and Klaus Wehrle have contributed the industrial use cases ({{industrialUseCases}}).
 * Dirk Trossen has contributed the following use cases: {{mobileAppOffload}}, {{distributedAI}}, {{CDNs}}, {{CFaaS}}.
-* Marie-José Montpetit has contributed the XR use case ({{XR}})
-* David Griffin and Miguel Rio have contributed the use case on performing arts {{PerformingArts}}
+* Marie-José Montpetit has contributed the XR use case ({{XR}}).
+* David Griffin and Miguel Rio have contributed the use case on performing arts ({{PerformingArts}}).
