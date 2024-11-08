@@ -1,7 +1,7 @@
 ---
 title: Use Cases for In-Network Computing
 abbrev: COIN Use Cases
-docname: draft-irtf-coinrg-use-cases-06
+docname: draft-irtf-coinrg-use-cases-07
 date: {DATE}
 category: info
 ipr: trust200902
@@ -96,7 +96,6 @@ informative:
   VESTIN: DOI.10.1109/ETFA.2018.8502456
   GLEBKE: DOI.10.24251/HICSS.2019.871
   USECASEANALYSIS: I-D.draft-irtf-coinrg-use-case-analysis
-  TERMINOLOGY: I-D.draft-irtf-coinrg-coin-terminology
   GRPC:
     title: High performance open source universal RPC framework
     author:
@@ -255,19 +254,18 @@ To achieve this, the following taxonomy is proposed to describe each of the use 
 
 4. Opportunities: An outline of how COIN capabilities may support or improve on the use case in terms of performance and other metrics. 
 
-5. Research questions: Essential questions that are suitable for guiding research to achieve the identified opportunities.
+5. Desirable capabilities: Description of capabilities for any COIN solutions that may need development along the opportunities outlined in item 4; we limit the capabilities to those directly affecting COIN, recognizing that any use case will realistically require many additional capabilities for its realization. 
 
-6. Desirable capabilities: Description of capabilities for any COIN solutions that may need development along the opportunities outlined in item 4; we limit the capabilities to those directly affecting COIN, recognizing that any use case will realistically require many additional capabilities for its realization. 
-
+6. Research questions: Essential questions that are suitable for guiding research to achieve the identified opportunities and capabilties.
 
 This document discusses these six aspects along a number of individual use cases to demonstrate the diversity of COIN applications.
-It is intended as a basis for further analyses and discussions within the Computing in the Network Research Group (COINRG) and the wider research community.
-A companion document {{USECASEANALYSIS}} is tasked with performing a cross-use case analysis, i.e., summarizing and distilling the key research questions across all use cases.
+It is intended as a basis for further analyses and discussions within the wider research community while a companion document within the Computing in the Network Research Group (COINRG) was originally tasked with performing a cross-use case analysis, i.e., summarizing and distilling the key research questions across all use cases.
+Accounting for the discontinuation of COINRG, this document instead provides a rough classification of the research questions to help facilitate analyses by the wider community.
 This document represents the consensus of COINRG.
 
 # Terminology {#terms}
 
-This document uses the terminology outlined in {{TERMINOLOGY}} as defined below.
+This document uses the terminology defined below.
 
 Programmable Network Devices (PNDs): network devices, such as network interface cards and switches, which are programmable, e.g., using P4 or other languages.
 
@@ -295,7 +293,7 @@ This scenario can be exemplified in an immersive gaming application, where a sin
 The headset hosts several (COIN) programs. 
 For instance, the "display" (COIN) program renders frames to the user, while other programs are realized for VR content processing and to incorporate input data received from sensors, e.g., in bodily worn devices including the VR headset.
    
-Once this application is partitioned into its constituent (COIN) programs and deployed throughout a COIN system, utilizing a COIN execution environment, only the "display" (COIN) program may be left in the headset, while the compute intensive real-time VR content processing (COIN) program can be offloaded to a nearby resource rich home PC or a programmable network device (PND, see {{TERMINOLOGY}}) in the operator's access network, for a better execution (faster and possibly higher resolution generation).
+Once this application is partitioned into its constituent (COIN) programs and deployed throughout a COIN system, utilizing a COIN execution environment, only the "display" (COIN) program may be left in the headset, while the compute intensive real-time VR content processing (COIN) program can be offloaded to a nearby resource rich home PC or a programmable network device (PND) in the operator's access network, for a better execution (faster and possibly higher resolution generation).
 
 ### Characterization
 
@@ -386,17 +384,6 @@ This capability, together with the underlying path-based forwarding capability (
 
    * The support for constraint-based selection of a specific (COIN) program instance over others (constraint-based routing in {{APPCENTRES}}, showcased for PNDs in {{SarNet2021}}) may allow for a more flexible and app-specific selection of (COIN) program instances, thereby allowing for better meeting the app-specific and end user requirements.
 
-### Research Questions {#mobileOffloadRQ}
-
-   * RQ 3.1.1: How to combine service-level orchestration frameworks with app-level packaging methods? 
-   * RQ 3.1.2: How to reduce latencies involved in (COIN) program interactions where (COIN) program instance locations may change quickly?
-   * RQ 3.1.3: How to signal constraints used for routing requests towards (COIN) program instances in a scalable manner? 
-   * RQ 3.1.4: How to identify (COIN) programs and program instances? 
-   * RQ 3.1.5: How to identify a specific choice of (COIN) program instances over others?
-   * RQ 3.1.6: How to provide affinity of service requests towards (COIN) program instances, i.e., longer-term transactions with ephemeral state established at a specific (COIN) program instance?
-   * RQ 3.1.7: How to provide constraint-based routing decisions that can be realized at packet forwarding speed, e.g., using techniques explored in {{SarNet2021}} at the forwarding plane or using approaches like {{Multi2020}} for extended routing protocols?
-   * RQ 3.1.8: What COIN capabilities may support the execution of (COIN) programs and their instances?
-
 
 ### Desirable Capabilities
 
@@ -419,6 +406,19 @@ This capability, together with the underlying path-based forwarding capability (
    * Capability 3.1.9: Such packaging should conform to existing application deployment models, such as mobile application packaging, TOSCA orchestration templates or tar balls or combinations thereof. 
 
    * Capability 3.1.10: Any COIN system must provide means for real-time synchronization and consistency of distributed application states.
+
+
+### Research Questions {#mobileOffloadRQ}
+
+   * RQ 3.1.1: How to combine service-level orchestration frameworks with app-level packaging methods? 
+   * RQ 3.1.2: How to reduce latencies involved in (COIN) program interactions where (COIN) program instance locations may change quickly?
+   * RQ 3.1.3: How to signal constraints used for routing requests towards (COIN) program instances in a scalable manner? 
+   * RQ 3.1.4: How to identify (COIN) programs and program instances? 
+   * RQ 3.1.5: How to identify a specific choice of (COIN) program instances over others?
+   * RQ 3.1.6: How to provide affinity of service requests towards (COIN) program instances, i.e., longer-term transactions with ephemeral state established at a specific (COIN) program instance?
+   * RQ 3.1.7: How to provide constraint-based routing decisions that can be realized at packet forwarding speed, e.g., using techniques explored in {{SarNet2021}} at the forwarding plane or using approaches like {{Multi2020}} for extended routing protocols?
+   * RQ 3.1.8: What COIN capabilities may support the execution of (COIN) programs and their instances?
+
 
 
 
@@ -493,18 +493,6 @@ While delay is inherently related to information transmission and if we continue
 * Intelligent network management and configuration: The move to artificial intelligence in network management to learn about flows and adapt resources based on both data plane and control plane programmability can help the overall deployment of XR services.
 
 
-### Research Questions
-
-* RQ 3.2.1: Can current PNDs provide the speed required for executing complex filtering operations, including metadata analysis for complex and dynamic scene rendering? 
-
-* RQ 3.2.2: Where should PNDs equipped with these operations be located for optimal performance gains? 
-
-* RQ 3.2.3: Can the use of federated learning algorithms across both data center and edge computers be used to create optimal function allocation and the creation of semi-permanent datasets and analytics for usage trending and flow management resulting in better localization of XR functions?
-
-* RQ 3.2.4: Can COIN improve the dynamic distribution of control, forwarding, and storage resources and related usage models in XR?
-
-* RQ 3.2.5: How COIN provide the necessary infrastructure for the use of interactive XR everywhere?
-
 ### Desirable Capabilities
 
 * Capability 3.2.1: COIN systems for XR must allow joint collaboration across all segments of the network (fog, edge, core, and cloud) to support functional decompositions.
@@ -517,6 +505,19 @@ While delay is inherently related to information transmission and if we continue
 * Capability 3.2.8: COIN systems for XR may provide means for trend analysis and telemetry to measure performance.
 * Capability 3.2.9: COIN systems for XR should interact with indoor and outdoor positioning systems to improve service location.
 * Capability 3.2.10: COIN systems for XR may provide means for managing the quality of XR sessions through reduced in-network congestion and improve flow delivery by determining how to prioritize XR data.
+
+
+### Research Questions
+
+* RQ 3.2.1: Can current PNDs provide the speed required for executing complex filtering operations, including metadata analysis for complex and dynamic scene rendering? 
+
+* RQ 3.2.2: Where should PNDs equipped with these operations be located for optimal performance gains? 
+
+* RQ 3.2.3: Can the use of federated learning algorithms across both data center and edge computers be used to create optimal function allocation and the creation of semi-permanent datasets and analytics for usage trending and flow management resulting in better localization of XR functions?
+
+* RQ 3.2.4: Can COIN improve the dynamic distribution of control, forwarding, and storage resources and related usage models in XR?
+
+* RQ 3.2.5: How COIN provide the necessary infrastructure for the use of interactive XR everywhere?
 
 
 
@@ -565,6 +566,15 @@ Note: Existing solutions for some aspects of this use case are covered in {{mobi
 For example, the overall delay for performance capture, aggregation, distribution, personalization, consumption, capture of audience response, feedback processing, aggregation, and rendering should be achieved within an upper bound of latency (the tolerable amount is to be defined, but in the order of 100s of ms to mimic performers perceiving audience feedback, such as laughter or other emotional responses in a theater setting).
 * Processing of media streams allows (COIN) Programs, PNDs and the wider (COIN) System/Environment to be contextually aware of flows and their requirements which can be used for determining network treatment of the flows, e.g., path selection, prioritization, multi-flow coordination, synchronization and resilience.
 
+
+### Desirable Capabilities
+* Capability 3.3.1: Users should be able to specify requirements on network and processing metrics (such as latency and throughput bounds).
+
+* Capability 3.3.2  A COIN System should be able to respect user-specified requirements and constraints when routing flows and selecting PNDs for executing (COIN) Programs.
+
+* Capability 3.3.3: A COIN System should be able to synchronize flow treatment and processing across multiple related flows which may be on disjoint paths.
+
+
 ### Research Questions:
 
 * RQ 3.3.1: In which PNDs should (COIN) Programs for aggregation, encoding, and personalization functions be located? Close to the performers or close to the viewers?
@@ -584,12 +594,6 @@ This RQ raises issues associated with synchronisation across multiple media stre
 * RQ 3.3.7: If the execution of COIN Programs is offloaded to computational nodes outside of PNDs, e.g. for processing by GPUs, should this still be considered as COIN? Where is the boundary between COIN capabilities and explicit routing of flows to endsystems?
 
 
-### Desirable Capabilities
-* Capability 3.3.1: Users should be able to specify requirements on network and processing metrics (such as latency and throughput bounds).
-
-* Capability 3.3.2  A COIN System should be able to respect user-specified requirements and constraints when routing flows and selecting PNDs for executing (COIN) Programs.
-
-* Capability 3.3.3: A COIN System should be able to synchronize flow treatment and processing across multiple related flows which may be on disjoint paths.
 
 
 # Supporting new COIN Systems {#newEnvironments}
@@ -645,31 +649,32 @@ Early approaches such as {{RUETH}} and {{VESTIN}} have already shown the general
 
 * Creating a coupled control that is exercised via (i) simplified approximations of more complex control algorithms deployed in COIN execution environments, and (ii) more complex overall control schemes deployed in the cloud can allow for quicker, yet more inaccurate responses from within the network while still providing for sufficient control accuracy at higher latencies from afar.
 
+### Desirable Capabilities
+
+* Capability 4.1.1: Solutions should allow for dynamically (re-)composing control functions and for placing them in COIN execution environments.
+
+* Capability 4.1.2: The interaction between COIN execution environments and the global controller should be explicit.
+
+* Capability 4.1.3: Actions of COIN execution environments must be overridable by the global controller.
+
+* Capability 4.1.4: Functions in COIN execution environments should expose reliable information on the predicted delay and must expose reliable information on the predicted accuracy to the global control.
+
 
 ### Research Questions
 
 * RQ 4.1.1: How to derive simplified versions of the global (control) function?
-    * How to account for the limited computational precision of PNDs, typically only allowing for integer precision computation, while floating-point precision is needed by most control algorithms (cf. {{KUNZE-APPLICABILITY}})?
-    * How to find suitable tradeoffs regarding simplicity of the control function ("accuracy of the control") and implementation complexity ("implementability")?
-* RQ 4.1.2: How to distribute the simplified versions in the network?
-    * Can there be different control levels, e.g., "quite inaccurate & very low latency" (PNDs, deep in the network), "more accurate & higher latency" (more powerful COIN execution environments, farer away), "very accurate & very high latency" (cloud environments, far away)?
-    * Who decides which control instance is executed and how?
-    * How do the different control instances interact?
 
+* RQ 4.1.2: How to account for the limited computational precision of PNDs, typically only allowing for integer precision computation, while floating-point precision is needed by most control algorithms (cf. {{KUNZE-APPLICABILITY}})?
 
-### Desirable Capabilities
+* RQ 4.1.3: How to find suitable tradeoffs regarding simplicity of the control function ("accuracy of the control") and implementation complexity ("implementability")?
 
-* Capability 4.1.1: The interaction between COIN execution environments and the global controller should be explicit.
+* RQ 4.1.4: How to distribute simplified versions of the global (control) function among COIN execution environments?
 
-* Capability 4.1.2: The interaction between COIN execution environments and the global controller must not negatively impact the control quality.
+* RQ 4.1.5: Can there be different control levels, e.g., "quite inaccurate & very low latency" (PNDs, deep in the network), "more accurate & higher latency" (more powerful COIN execution environments, farer away), "very accurate & very high latency" (cloud environments, far away)?
 
-* Capability 4.1.3: Actions of COIN execution environments must be overridable by the global controller.
+* RQ 4.1.6: Who decides which control instance is executed and which information can be used for this decision?
 
-* Capability 4.1.4: Functions in COIN execution environments should be executed with predictable delay.
-
-* Capability 4.1.5: Functions in COIN execution environments must be executed with predictable accuracy.
-
-
+* RQ 4.1.7: How do the different control instances interact and how can we define their hierarchy?
 
 ## Large Volume Applications {#filtering}
 
@@ -681,8 +686,8 @@ Overall, there is a high level of heterogeneity which makes managing the sensor 
 
 Depending on the deployed sensors and the complexity of the observed system, the resulting overall data volume can easily be in the range of several Gbit/s {{GLEBKE}}.
 These volumes are often already difficult to handle in local environments and it becomes even more challenging when off-premise clouds are used for managing the data.
-While large networking companies can simply upgrade their infrastructure to accommodate the accruing data volumes, most industrial companies operate on tight infrastructure budgets and upgrading is hence not always feasible or possible.
-A major challenge is thus to devise a methodology that is able to handle such amounts of data over limited access links.
+While large networking companies can simply upgrade their infrastructure to accommodate the accruing data volumes, most industrial companies operate on tight infrastructure budgets such that frequently upgrading is not always feasible or possible.
+Hence, a major challenge is to devise a methodology that is able to handle such amounts of data efficiently and flexibily without relying on recurring infrastructure upgrades.
 
 Data filtering and preprocessing, similar to the considerations in {{XR}}, can be building blocks for new solutions in this space.
 Such solutions, however, might also have to address the added challenge of business data leaving the premises and control of the company.
@@ -724,30 +729,26 @@ Augmenting the existing capabilities, COIN offers a new dimension of platforms f
 
 * (Semantic) data (pre-)processing, e.g., in the form of computations across multiple packets and potentially leveraging packet payload, can also reduce the data volume without losing any important information.
 
+###  Desirable capabilities {#FilteringReq}
+
+* Capability 4.2.1: Solutions should provide filters and preprocessors that are recomposable and reconfigurable at run-time.
+
+* Capability 4.2.2: Filters and preprocessors must conform to application-level syntax and semantics.
+
+* Capability 4.2.3: Filters and preprocessors may leverage packet header and payload information.
+
 
 ### Research Questions {#FilteringRQ}
 
 Some of the following research questions are also relevant in the context of general stream processing systems.
 
 * RQ 4.2.1: How can the overall data processing pipeline be divided into individual processing steps that could then be deployed as COIN functionality?
-* RQ 4.2.2: How to design COIN programs for (semantic) packet filtering?
-    * Which criteria for filtering make sense? 
-* RQ 4.2.3: Which kinds of COIN programs can be leveraged for (pre-)processing steps?
-    * How complex can they become?
+* RQ 4.2.2: How to design COIN programs for (semantic) packet filtering and which filtering criteria make sense?
+* RQ 4.2.3: Which kinds of COIN programs can be leveraged for (pre-)processing steps and what complexity can they have?
 * RQ 4.2.4: How to distribute and coordinate COIN programs?
 * RQ 4.2.5: How to dynamically change COIN programs?
 * RQ 4.2.6: How to incorporate the (pre-)processing and filtering steps into the overall system?
-    * How can changes to the data by COIN programs be signaled to the end-hosts?
-
-
-###  Desirable capabilities {#FilteringReq}
-
-* Capability 4.2.1: Filters and preprocessors must conform to application-level syntax and semantics.
-
-* Capability 4.2.2: Filters and preprocessors may leverage packet header and payload information.
-
-* Capability 4.2.3: Filters and preprocessors should be reconfigurable at run-time.
-
+* RQ 4.2.7: How can changes to the data by COIN programs be signaled to the end-hosts?
 
 ## Industrial Safety {#safety}
 
@@ -790,19 +791,17 @@ Such solutions, however, require setting up an additional system and do not leve
 * Executing safety-critical COIN functions on PNDs could allow for early emergency reactions based on diverse sensor feedback with low latencies.
 * COIN software could provide independent on-path surveillance of control software-initiated actions to block unsafe commands.
 
-
-### Research Questions
-
-* RQ 4.3.1: Which additional safety measures can be provided?
-  * Do these measures actually improve safety?
-* RQ 4.3.2: Which sensor information can be combined and how?
-
 ###  Desirable capabilities 
 
 * Capability 4.3.1: COIN-based safety measures must not degrade existing safety measures.
 
 * Capability 4.3.2: COIN-based safety measures may enhance existing safety measures.
 
+### Research Questions
+
+* RQ 4.3.1: Which additional safety measures can be provided?
+  * Do these measures actually improve safety?
+* RQ 4.3.2: Which sensor information can be combined and how?
 
 # Improving existing COIN capabilities {#existingCapabilities}
 
@@ -841,6 +840,12 @@ Works such as those in {{SILKROAD}} utilize ASICs to replace server-based load b
 
    * Supporting Layer 2 capabilities for multicast (compute interconnection and collective communication in {{APPCENTRES}}), e.g., through in-network/switch-based replication decisions (and their optimizations) based on dynamic group membership information, may reduce the network utilization and therefore increase the overall system efficiency.
 
+### Desirable Capabilities
+
+Capabilities 3.1.1 through 3.1.6 also apply for CDN service access. 
+In addition:
+
+* Capability 5.1.1: Any solution should utilize Layer 2 multicast transmission capabilities for responses to concurrent service requests. 
 
 ### Research Questions
 In addition to the research questions in {{mobileOffloadRQ}}:
@@ -857,14 +862,6 @@ In addition to the research questions in {{mobileOffloadRQ}}:
 
    * RQ 5.1.6: What scalability limits exist for L2 multicast capabilities? How to overcome them, e.g., through (COIN) program instances serving as stateful subtree aggregators to reduce the needed identifier space for, e.g., bit-based forwarding? 
 
-
-
-### Desirable Capabilities
-
-Capabilities 3.1.1 through 3.1.6 also apply for CDN service access. 
-In addition:
-
-* Capability 5.1.1: Any solution should utilize Layer 2 multicast transmission capabilities for responses to concurrent service requests. 
 
 ## Compute-Fabric-as-a-Service (CFaaS) {#CFaaS}
 
@@ -905,15 +902,6 @@ L2 network virtualization (see, e.g., {{L2Virt}}) is one of the methods used for
    * Supporting the enforcement of trust relationships and isolation policies through intermediary (COIN) program instances, e.g., enforcing specific traffic shares or strict isolation of traffic through differentiated queueing.
 
 
-### Research Questions
-In addition to the research questions in {{mobileOffloadRQ}}:
-
-   * RQ 5.2.1: How to convey tenant-specific requirements for the creation of the CFaaS fabric?
-   * RQ 5.2.2: How to dynamically integrate resources, particularly when driven by tenant-level requirements and changing service-specific constraints? 
-   * RQ 5.2.3: How to utilize COIN capabilities to aid the availability and accountability of resources, i.e., what may be (COIN) programs for a CFaaS environment that in turn would utilize the distributed execution capability of a COIN system?
-   * RQ 5.2.4: How to utilize COIN capabilities to enforce traffic and isolation policies for establishing trust between tenant and CFaaS provider in an assured operation?
-
-
 ### Desirable Capabilities
 
 Capabilities 3.1.1 through 3.1.6 also apply for the provisioning of services atop the CFaaS.
@@ -928,6 +916,14 @@ In addition:
    * Capability 5.2.4: Any solution must provide means for ensuring that availability and usage of resources is accounted for.
 
 
+### Research Questions
+In addition to the research questions in {{mobileOffloadRQ}}:
+
+   * RQ 5.2.1: How to convey tenant-specific requirements for the creation of the CFaaS fabric?
+   * RQ 5.2.2: How to dynamically integrate resources, particularly when driven by tenant-level requirements and changing service-specific constraints? 
+   * RQ 5.2.3: How to utilize COIN capabilities to aid the availability and accountability of resources, i.e., what may be (COIN) programs for a CFaaS environment that in turn would utilize the distributed execution capability of a COIN system?
+   * RQ 5.2.4: How to utilize COIN capabilities to enforce traffic and isolation policies for establishing trust between tenant and CFaaS provider in an assured operation?
+
 
 ##  Virtual Networks Programming {#virtNetProg}
 
@@ -941,7 +937,7 @@ For example, COIN programs could perform the following on a tenant's virtual net
 
 * Allow or block flows, and request rules from an SDN controller for each new flow, or for flows to or from specific hosts that need enhanced security
 * Forward a copy of some flows towards a node for storage and analysis
-* Update counters based on specific sources/destinations or protocols, for detailed analytics
+* Update metrics based on specific sources/destinations or protocols, for detailed analytics
 * Associate traffic between specific endpoints, using specific protocols, or originated from a given application, to a given slice, while other traffic uses a default slice
 * Experiment with a new routing protocol (e.g., ICN), using a P4 implementation of a router for this protocol
 
@@ -1007,25 +1003,25 @@ Virtual network programming by tenants could bring benefits such as:
 For example, 5G network evolution points to an ever increasing specialization and customization of private mobile networks, which could be handled by tenants using a programming model similar to P4.
 * Using network programs to influence underlying network services, e.g., request specific QoS for some flows in 5G or datacenters, to increase the level of in-depth customization available to tenants.
 
-
-###  Research Questions
-
-* RQ 5.3.1: Underlying Network Awareness: a virtual COIN program can be able to influence, and be influenced by, the underling network. Since some information and actions may be available on some nodes and not others, underlying network awareness may impose additional constraints on distributed network programs location.
-
-* RQ 5.3.2: Splitting/Distribution: a virtual COIN program may need to be deployed across multiple computing nodes, leading to research questions around instance placement and distribution. For example, program logic should be applied exactly once or at least once per packet, while allowing optimal forwarding path by the underlying network. Research challenges include defining manual (by the programmer) or automatic methods to distribute COIN programs that use a low or minimal amount of resources. Distributed P4 programs are studied in {{I-D.hsingh-coinrg-reqs-p4comp}} and {{Sultana}}.
-
-* RQ 5.3.3: Multi-Tenancy Support: multiple virtual COIN program instances can run on the same compute node. While mechanisms were proposed for P4 multi-tenancy in a switch {{Stoyanov}}, research questions remain about isolation between tenants and fair repartition of resources.
-
-* RQ 5.3.4: Security: how can tenants and underlying networks be protected against security risks, including overuse or misuse of network resources, injection of traffic, or access to unauthorized traffic?
-
-* RQ 5.3.5: Higher layer processing: can a virtual network model facilitate the deployment of COIN programs acting on application layer data? This is an open question since the present section focused on packet/flow processing.
-
 ### Desirable Capabilities
 
 * Capability 5.3.1: A COIN system supporting virtualization should enable tenants to deploy COIN programs onto their virtual networks. 
 * Capability 5.3.2: A virtual COIN program should process flows/packets once and only once (or at least once for idempotent operations), even if the program is distributed over multiple PNDs. 
 * Capability 5.3.3: Multi-tenancy should be supported for virtual COIN programs, i.e., instances of virtual COIN programs from different tenants can share underlying PNDs. This includes requirements for secure isolation between tenants, and fair (or policy-based) sharing of computing resources. 
 * Capability 5.3.4: Virtual COIN programs should support mobility of endpoints.
+
+###  Research Questions
+
+* RQ 5.3.1: Underlying Network Awareness: a virtual COIN program can be able to influence, and be influenced by, the underling network. Research challenges include defining methods to distribute COIN programs based on network awareness, since some information and actions may be available on some nodes but not on others.
+
+* RQ 5.3.2: Splitting/Distribution: a virtual COIN program may need to be deployed across multiple computing nodes, leading to research questions around instance placement and distribution. For example, program logic should be applied exactly once or at least once per packet, while allowing optimal forwarding path by the underlying network. Research challenges include defining manual (by the programmer) or automatic methods to distribute COIN programs that use a low or minimal amount of resources. Distributed P4 programs are studied in {{I-D.hsingh-coinrg-reqs-p4comp}} and {{Sultana}} (based on capability 5.3.2).
+
+* RQ 5.3.3: Multi-Tenancy Support: multiple virtual COIN program instances can run on the same compute node. While mechanisms were proposed for P4 multi-tenancy in a switch {{Stoyanov}}, research questions remain about isolation between tenants and fair repartition of resources (based on capability 5.3.3).
+
+* RQ 5.3.4: Security: how can tenants and underlying networks be protected against security risks, including overuse or misuse of network resources, injection of traffic, or access to unauthorized traffic?
+
+* RQ 5.3.5: Higher layer processing: can a virtual network model facilitate the deployment of COIN programs acting on application layer data? This is an open question since the present section focused on packet/flow processing.
+
 
 
 # Enabling new COIN capabilities {#newCapabilities}
@@ -1059,15 +1055,6 @@ A number of activities on distributed AI training exist in the area of developin
     collective primitive operations in (COIN) program instances placed in topologically advantageous places.
    * Supporting collective communication between multiple instances of AI services, i.e., (COIN) program instances, may  positively impact network but also compute utilization by moving from unicast replication to network-assisted multicast operation.
 
-### Research Questions
-In addition to the research questions in {{mobileOffloadRQ}}:
-
-   * RQ 6.1.1: What are the communication patterns that may be supported by collective communication solutions, where those solutions directly utilize (COIN) program instance capabilities within the network (e.g., reduce in a central (COIN) program instance)?
-   * RQ 6.1.2: How to achieve scalable multicast delivery for collective communication primitives with rapidly changing receiver sets, e.g., where training workers may be dynamically selected based on energy efficiency constraints {{GREENAI}}?
-   * RQ 6.1.3: What COIN capabilities may support the collective communication patterns found in distributed AI problems?
-   * RQ 6.1.4: How to provide a service routing capability that supports AI-specific invocation protocols, such as MPI or RDMA?
-
-
 ### Desirable Capabilities
 
 Capabilities 3.1.1 through 3.1.6 also apply for general distributed AI capabilities. 
@@ -1077,6 +1064,43 @@ In addition:
 
    * Capability 6.1.2: Any COIN system must provide support for app/micro-service specific invocation protocols for requesting (COIN) program services exposed to the COIN system.
 
+### Research Questions
+In addition to the research questions in {{mobileOffloadRQ}}:
+
+   * RQ 6.1.1: What are the communication patterns that may be supported by collective communication solutions, where those solutions directly utilize (COIN) program instance capabilities within the network (e.g., reduce in a central (COIN) program instance)?
+   * RQ 6.1.2: How to achieve scalable multicast delivery for collective communication primitives with rapidly changing receiver sets, e.g., where training workers may be dynamically selected based on energy efficiency constraints {{GREENAI}}?
+   * RQ 6.1.3: What COIN capabilities may support the collective communication patterns found in distributed AI problems?
+   * RQ 6.1.4: How to provide a service routing capability that supports AI-specific invocation protocols, such as MPI or RDMA?
+
+
+
+
+# Classification
+This document was intended to collect and describe a diverse set of use cases that should then serve as input for wider discussions and analyses within COINRG.
+In particular, a through analysis of the use cases is not in scope of this document.
+In light of the discontinuation of COINRG after the publication of this document and to facilitate follow-up work that might be conducted within the IRTF or elsewhere, we provide a rough classification of the observed research questions.
+In particular, we identify an increasing specificity of research questions, starting with questions pertaining the general vision for COIN {{COINVision}} and assessing required enabling technologies {{EnablingTechnologies}}, followed by general aspects of distributed computing frameworks and languages for COIN {{COINFramework}}, and stretching to specific applicability areas {}.
+
+## Vision for COIN {#COINVision}
+Several use case opportunities and their corresponding research questions aim to gauge the possible scope of COIN and possible applicability areas.
+In particular, many questions center around where and on which devices to perform computations in general(e.g., RQ 3.1.8, 3.3.5, 3.3.7), which tasks are suitable for COIN (e.g., RQ 3.3.6), and if COIN is actually suitable for specific tasks (e.g., RQ 6.1.1, 6.1.4).
+
+
+## Enabling technologies for COIN {#EnablingTechnologies}
+Other research questions focus on the underlying enabling technologies for COIN.
+For example, which COIN capabilities might be required for providing COIN programs (e.g., RQ 3.1.8) or what basic forwarding technologies need to be provided (e.g., RQ 3.1.7, 5.1.1, 5.1.2, 5.1.6, 6.1.2, 6.1.3).
+
+
+## Toward distributed computing frameworks and languages for COIN {#COINFramework}
+In essence, COIN diversifies general distributed computing platforms such that many COIN-related research questions could also apply to general distributed computing frameworks.
+As the fundamental starting point, the first question is how to compose COIN programs (e.g., RQ 3.1.1, 4.2.1, 5.3.2, 5.3.3, 5.3.5).
+Once the programs are composed, the next set of questions deals with deciding where to place the functionality (e.g., RQ 3.3.1, 3.3.2, 3.3.3, 3.3.5, 5.2.1) and with how to conduct the deployment (e.g., RQ 3.1.4, 3.1.5, 4.2.1, 4.2.4).
+Once deployed, the next step is the continuous operation of the COIN programs (e.g., RQ 3.2.4, 4.2.5, 5.2.2, 5.2.3) and how they can be actually integrated into the existing systems (e.g., RQ 4.2.6, 4.2.7, 5.3.1).
+Finally, a set of questions also deals with general COIN systems properties, such as security (RQ 5.3.4) or system optimization (RQ 3.2.3). 
+
+## Different COIN applicability areas
+Finally, each use case highlights the applicability of COIN to other application areas.
+In particular, we identify transport (RQ 3.1.2), app design (RQ 4.2.2, 5.1.1, 5.1.3, 5.1.5), data processing (RQ 3.2.3, 4.2.3, 4.3.2), and (industrial) control solutions (RQ 3.2.4, 3.3.1, 3.3.4, 4.1.1, 4.3.1) as promising application areas along more traditional settings with regard to routing and forwarding (RQ 3.1.2, 3.1.3, 3.1.4, 3.1.5, 3.1.6, 5.1.2, 5.1.3, 5.1.4, 6.1.4).
 
 # Security Considerations {#sec_considerations}
 
@@ -1111,18 +1135,18 @@ N/A
 
 
 # Conclusion
-This document presented use cases gathered from several application domains that can and could profit from capabilities that are provided by in-network and, more generally, distributed compute capabilities.
+This document presented use cases gathered from several application domains that can and could profit from capabilities that are provided by in-network and, more generally, distributed compute platforms.
 We distinguished between use cases in which COIN may enable new experiences ({{newExperiences}}), expose new features ({{newCapabilities}}), or improve on existing system capabilities ({{existingCapabilities}}), and other use cases where COIN capabilities enable totally new applications, for example, in industrial networking ({{newEnvironments}}).
 
-Beyond the mere description and characterization of those use cases, we identified opportunities arising from utilizing COIN capabilities as well as research questions that may need to be addressed before being able to reap those opportunities.
-We also outlined desirable capabilities for COIN systems realizing these use cases.
+Beyond the mere description and characterization of those use cases, we identified opportunities arising from utilizing COIN capabilities and desirable capabilities for COIN systems realizing these use cases.
+We also posed research questions that may need to be addressed before being able to reap those opportunities and enable the described capabilities.
 
 We acknowledge that this work offers no comprehensive overview of possible use cases and is thus only a snapshot of what may be possible if COIN capabilities existed.  
 In fact, the decomposition of many current client-server applications into node by node transit could identify other opportunities for adding computing to forwarding notably in supply-chain, health care, intelligent cities and transportation and even financial services (among others).
+The presented use cases were selected based on the expertise of the contributing community members at the time of writing and are intended to cover a diverse range from immersive and interactive media, industrial networks, to AI with varying characteristics. 
 
 With this in mind, updates to this document might become necessary or desirable in the future to capture this extended view on what may be possible. 
-We are, however, confident that the current selection of use cases, each describing the dimensions of opportunities, research questions, and desired capabilities, already represents a useful set of scenarios that yield themselves for a subsequent analysis that is currently intended to be performed in {{USECASEANALYSIS}}. 
-Through this, the use cases presented here together with the intended analysis provide direct input into the milestones of COINRG in terms of required functionalities.
+We are, however, confident that the current selection of use cases, each describing the dimensions of opportunities, desired capabilities, and research questions, already represents a useful set of scenarios that yield themselves for a thorough subsequent analysis that was originally intended to be performed by COINRG but is now left open for the wider research community.
 
 # Acknowledgements
 
