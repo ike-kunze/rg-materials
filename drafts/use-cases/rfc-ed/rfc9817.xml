@@ -37,15 +37,15 @@
       </address>
     </author>
     <author initials="D." surname="Trossen" fullname="Dirk Trossen">
-      <organization abbrev="Huawei">Huawei Technologies Duesseldorf GmbH</organization>
+      <organization abbrev="DaPaDOT Tech">DaPaDOT Tech UG(haftungsbeschränkt) </organization>
       <address>
         <postal>
-          <street>Riesstr. 25C</street>
+          <street>Palestrinastr. 7 a</street>
           <city>Munich</city>
-          <code>D-80992</code>
+          <code>D-80639</code>
           <country>Germany</country>
         </postal>
-        <email>Dirk.Trossen@Huawei.com</email>
+        <email>dirk@dapadot-tech.eu</email>
       </address>
     </author>
     <author initials="M-J." surname="Montpetit" fullname="Marie-Jose Montpetit">
@@ -1473,11 +1473,11 @@ Option B (using a sublist):
 -->
 
             <li>
-              <t>RQ 4.1.6: Can there be different control levels, e.g., "quite
-              inaccurate &amp; very low latency" (PNDs, deep in the network),
-              "more accurate &amp; higher latency" (more powerful COIN
-              execution environments, farther away), "very accurate &amp; very
-              high latency" (cloud environments, far away)?</t> </li> <li>
+              <t>RQ 4.1.6: Can there be different control levels? For example, 
+              "quite inaccurate &amp; very low latency" for PNDs deep in the network;
+              "more accurate &amp; higher latency" for more powerful COIN execution
+              environments that are farther away; and "very accurate &amp; very high
+              latency" for cloud environments that are far away.</t></li><li>
               <t>RQ 4.1.7: Who decides which control instance is executed and
               which information can be used for this decision?</t>
             </li>
