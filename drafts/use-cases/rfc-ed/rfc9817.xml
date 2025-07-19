@@ -37,10 +37,10 @@
       </address>
     </author>
     <author initials="D." surname="Trossen" fullname="Dirk Trossen">
-      <organization abbrev="DaPaDOT Tech">DaPaDOT Tech UG(haftungsbeschränkt) </organization>
+      <organization abbrev="DaPaDOT Tech">DaPaDOT Tech UG (haftungsbeschränkt)</organization>
       <address>
         <postal>
-          <street>Palestrinastr. 7 a</street>
+          <street>Palestrinastr. 7A</street>
           <city>Munich</city>
           <code>D-80639</code>
           <country>Germany</country>
@@ -49,15 +49,15 @@
       </address>
     </author>
     <author initials="M-J." surname="Montpetit" fullname="Marie-Jose Montpetit">
-      <organization abbrev="McGill">McGill University</organization>
+      <organization abbrev="SLICES-RI">SLICES-RI</organization>
       <address>
         <postal>
-          <street>680 Sherbrooke Street W.</street>
-          <city>Montreal</city>
-          <code>H3A 3R1</code>
-          <country>Canada</country>
+          <street>.</street>
+          <city>Paris</city>
+          <code></code>
+          <country>France</country>
         </postal>
-        <email>marie-jose.montpetit@mcgill.ca</email>
+        <email>marie-jose.montpetit@slice-ri.eu</email>
       </address>
     </author>
     <author initials="X." surname="de Foy" fullname="Xavier de Foy">
@@ -187,7 +187,7 @@ https://www.rfc-editor.org/rfc/rfc5743.html#section-2.1.
        <dt>Characterization:</dt><dd>An explanation of the services that are
        being utilized and realized as well as the semantics of interactions in
        the use case.</dd>
-       <dt>Existing Solutions:</dt><dd>A description of current methods that may
+       <dt>Existing solutions:</dt><dd>A description of current methods that may
        realize the use case (if they exist), though not claiming to exhaustively
        review the landscape of solutions.</dd>
        <dt>Opportunities:</dt><dd>An outline of how COIN capabilities may
@@ -354,7 +354,7 @@ experience are due to selecting more suitably placed program instances):
           smart TV) by selecting more suitably placed (COIN) program instances
           in the overall (COIN) system.</t>
           <t>We can already see a trend toward supporting such functionality
-          with relyiccng on dedicated cloud hardware (e.g., gaming platforms
+          that relies on dedicated cloud hardware (e.g., gaming platforms
           rendering content externally). We envision, however, that such
           functionality is becoming more pervasive through specific
           facilities, such as entertainment parks or even hotels, in order to
@@ -1077,26 +1077,6 @@ Perhaps:
               that may be imposed by the performers or the director for
               artistic reasons);</t>
             </li>
-<!--[rfced] FYI, this text has been updated to use person-first language.
-Please let us know if you prefer otherwise.
-
-Original:
-   *  Augmentation of the performance with subtitles, audio-description,
-      actor-tagging, language translation, advertisements/product-
-      placement, other enhancements/filters to make the performance
-      accessible to disabled audience members (removal of flashing
-      images for epileptics, alternative color schemes for color-blind
-      audience members, etc.).
-
-Current:
-   *  Augmentation of the performance with subtitles, audio description,
-      actor tagging, language translation, advertisements and product
-      placement, and other enhancements and filters to make the
-      performance accessible to audience members who are disabled (e.g.,
-      the removal of flashing images for audience members who have
-      epilepsy or alternative color schemes for those who have color                   
-      blindness).
--->
             <li>
               <t>Augmentation of the performance with subtitles, audio
               description, actor tagging, language translation, advertisements
@@ -1444,34 +1424,6 @@ Current:
               <t>RQ 4.1.5: How to (dynamically) compose or recompose the distributed
               control functions?</t>
             </li>
-
-<!-- [rfced] For clarity, may we adjust this list as follows?
-
-Original:
-   *  RQ 4.1.6: Can there be different control levels, e.g., "quite
-      inaccurate & very low latency" (PNDs, deep in the network), "more
-      accurate & higher latency" (more powerful COIN execution
-      environments, farer away), "very accurate & very high latency"
-      (cloud environments, far away)?
-
-Option A (without parentheses):
-    *  RQ 4.1.6: Can there be different control levels? For example,
-       "quite inaccurate & very low latency" for PNDs deep in the network;
-       "more accurate & higher latency" for more powerful COIN execution
-       environments that are farther away; and "very accurate & very high
-       latency" for cloud environments that are far away.
-
-Option B (using a sublist):
-   *  RQ 4.1.6: Can there be different control levels?  For example:
-
-      -  "quite inaccurate & very low latency" for PNDs deep in the
-         network;
-      -  "more accurate & higher latency" for more powerful COIN execution
-         environments that are farther away; and
-      -  "very accurate & very high latency" for cloud environments that 
-         are far away.
--->
-
             <li>
               <t>RQ 4.1.6: Can there be different control levels? For example, 
               "quite inaccurate &amp; very low latency" for PNDs deep in the network;
@@ -1631,7 +1583,7 @@ Option B (using a sublist):
             </li>
             <li>
               <t>RQ 4.2.3: Which kinds of COIN programs can be leveraged for
-              (pre)processing steps and what complexity can they have?</t>
+              preprocessing and processing steps and what complexity can they have?</t>
             </li>
             <li>
               <t>RQ 4.2.4: How to distribute and coordinate COIN programs?</t>
@@ -1640,7 +1592,7 @@ Option B (using a sublist):
               <t>RQ 4.2.5: How to dynamically reconfigure and recompose COIN programs?</t>
             </li>
             <li>
-              <t>RQ 4.2.6: How to incorporate the (pre)processing and
+              <t>RQ 4.2.6: How to incorporate the preprocessing, processing, and
               filtering steps into the overall system?</t>
             </li>
             <li>
@@ -2226,34 +2178,12 @@ Perhaps:
           <name>Opportunities</name>
           <t>Virtual network programming by tenants could bring benefits such as:</t>
           <ul spacing="normal">
-
-<!-- [rfced] May "controller" be plural here in order to be parallel 
-with the other plural list items?
-
-Original:
-   Virtual network programming by tenants could bring benefits such as:
-
-   *  A unified programming model, which can facilitate porting COIN
-      programs between data centers, 5G networks, and other fixed and
-      wireless networks, as well as sharing controller, code and
-      expertise.
-
-Perhaps:
-   Virtual network programming by tenants could bring benefits such as:
-
-   *  A unified programming model, which can facilitate porting COIN
-      programs between data centers, 5G networks, and other fixed and
-      wireless networks, as well as sharing controllers, code, and
-      expertise.
--->
-
-
             <li>
               <t>A unified programming model, which can facilitate porting
               COIN programs between data centers, 5G networks, and other fixed
-              and wireless networks, as well as sharing controller, code and
+              and wireless networks, as well as sharing controllers, code, and
               expertise.</t>
-            </li>
+	    </li>
             <li>
               <t>Increasing the level of customization available to
               customers/tenants of mobile networks or data centers compared to
@@ -2635,7 +2565,7 @@ to indicate that these terms refer to items in Figure 4.
       itself have malicious intentions (e.g., because it got compromised or
       the deployment of functionality offers new attack vectors to
       outsiders).</t>
-      <t>However, similar to middlebox deployments, risks for privacy and data
+      <t>However, similar to middlebox deployments, risks for privacy and the risk of data
       exposure have to be carefully considered in the context of the concrete
       deployment.  For example, exposing data to an external operator for
       mobile application offloading leads to a significant privacy loss of the
@@ -2677,7 +2607,7 @@ to indicate that these terms refer to items in Figure 4.
       may influence the selection of suitable security protocols.</t>
       <t>Additional system-level security considerations may arise from
       regulatory requirements imposed on COIN systems overall, stemming from
-      regulation regarding, lawful interception, data localization, or
+      regulation regarding lawful interception, data localization, or
       AI use, for example.  These requirements may impact, for example, the manner in which (COIN)
       programs may be placed or executed in the overall system, who can invoke
       certain (COIN) programs in what PND or COIN device, and what type of
@@ -2930,28 +2860,7 @@ IESG State: Expired as of 03/21/25.
 -->
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.hsingh-coinrg-reqs-p4comp.xml"/>
 
-<!--[rfced] References:
-
-a) For [Stoyanov], would you like to change the URL for this 
-reference or leave it as is?
-
-Current: https://eng.ox.ac.uk/media/6354/stoyanov2020mtpsa.pdf
-Perhaps: https://dl.acm.org/doi/10.1145/3426744.3431329
-
-b) For [SA2-5GLAN], the URL provided returns a "403 - Forbidden" 
-error. We were unable to find an alternative source for this
-reference. Please review and let us know how to update. 
-
-Current:
-   [SA2-5GLAN]
-              3GPP-5glan, "SP-181129, Work Item Description,
-              Vertical_LAN(SA2), 5GS Enhanced Support of Vertical and
-              LAN Services", 3GPP , 2021,
-              <http://www.3gpp.org/ftp/tsg_sa/TSG_SA/Docs/SP-
-              181120.zip>.
--->
-
-      <reference anchor="Stoyanov" target="https://eng.ox.ac.uk/media/6354/stoyanov2020mtpsa.pdf">
+      <reference anchor="Stoyanov" target="https://dl.acm.org/doi/10.1145/3426744.3431329">
         <front>
           <title>MTPSA: Multi-Tenant Programmable Switches</title>
           <author initials="R." surname="Stoyanov">
@@ -2989,7 +2898,7 @@ Current:
       </reference>
 
 
-      <reference anchor="SA2-5GLAN" target="http://www.3gpp.org/ftp/tsg_sa/TSG_SA/Docs/SP-181120.zip">
+      <reference anchor="SA2-5GLAN" target="https://www.3gpp.org/ftp/tsg_sa/TSG_SA/TSGS_82/Docs/SP-181120.zip">
         <front>
           <title>SP-181129, Work Item Description, Vertical_LAN(SA2), 5GS Enhanced Support of Vertical and LAN Services</title>
           <author initials="" surname="3GPP-5glan" fullname="3GPP-5glan">
